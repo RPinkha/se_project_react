@@ -5,6 +5,7 @@
 
 .weather-card {
   position: relative;
+  padding-bottom: 40px;
 }
 
 .weather-card__temperature {

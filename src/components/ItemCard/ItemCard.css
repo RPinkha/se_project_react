@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.otf") format("opentype");
+}
+
+.card {
+  border-radius: 19px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-width: 1px;
+  width: 325px;
+  height: 328px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.card__image {
+  width: 100%;
+}
+
+.card__image:hover {
+  cursor: pointer;
+}
+
+.card__title {
+  padding: 2px 12px;
+  position: absolute;
+  top: 15px;
+  margin: 0;
+  background-color: #fff;
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  border-radius: 4px;
+  pointer-events: none;
+}

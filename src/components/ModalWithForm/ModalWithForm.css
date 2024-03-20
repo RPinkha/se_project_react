@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.otf") format("opentype");
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__container {
+  margin: auto;
+  background-color: #fff;
+  padding: 28px 28px 28px 36px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal__title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk";
+  margin: 0;
+  padding-bottom: 24px;
+}
+
+.modal__input {
+  width: 440px;
+  border-width: 0 0 1px;
+  padding: 0 0 4px;
+}
+
+.modal__input::placeholder {
+  width: 440px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__close {
+  background-image: url(../../assets/Close\ Button.svg);
+  position: absolute;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: cover;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  padding: 0;
+  top: 20px;
+  right: 28px;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk";
+}
+
+.modal__fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modal__legend {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk";
+}
+
+.modal__label_type_radio {
+  flex-direction: row;
+  accent-color: black;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__label_type_radio:focus-within {
+  color: rgba(0, 0, 0);
+}
+
+.modal__submit {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk";
+  color: #fff;
+  background-color: #000;
+  padding: 8px 16px 8px 16px;
+  border-radius: 4px;
+  width: 124px;
+  border: 0;
+  margin-top: 8px;
+}
+
+.modal__submit:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__submit:disabled {
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.3);
+}

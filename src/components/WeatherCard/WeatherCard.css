@@ -27,4 +27,5 @@
   height: 80px;
   object-fit: cover;
   object-position: right top;
+  display: block;
 }

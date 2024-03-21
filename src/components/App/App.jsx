@@ -8,15 +8,29 @@ import "./App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "hot" });
+  const [activeModal, setActiveModal] = useState("");
+
+  const handleAddClick = () => {
+    setActiveModal("add-garment");
+  };
+
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
 
   return (
     <div className="page">
       <div className="page__content">
-        <Header />
+        <Header handleAddClick={handleAddClick} />
         <Main weatherData={weatherData} />
         <Footer />
       </div>
-      <ModalWithForm buttonText="Add garment" formTitle="New garment">
+      <ModalWithForm
+        buttonText="Add garment"
+        formTitle="New garment"
+        activeModal={activeModal}
+        handleCloseClick={closeActiveModal}
+      >
         <label htmlFor="Name" className="modal__label">
           Name
           <input

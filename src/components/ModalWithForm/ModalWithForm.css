@@ -15,10 +15,13 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
@@ -27,6 +30,9 @@
   padding: 28px 28px 28px 36px;
   border-radius: 20px;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 496px;
 }
 
 .modal__form {
@@ -45,7 +51,6 @@
 }
 
 .modal__input {
-  width: 440px;
   border-width: 0 0 1px;
   padding: 0 0 4px;
 }
@@ -56,7 +61,7 @@
 }
 
 .modal__close {
-  background-image: url(../../assets/Close\ Button.svg);
+  background-image: url(../../assets/Close.svg);
   position: absolute;
   background-repeat: no-repeat;
   background-color: transparent;

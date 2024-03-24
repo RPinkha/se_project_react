@@ -43,3 +43,10 @@ export const coordinates = {
   latitude: "55.752121",
   longitude: "37.617664",
 };
+
+export const weatherOptions = [
+  {
+    day: true,
+    condition: "clear",
+  },
+];

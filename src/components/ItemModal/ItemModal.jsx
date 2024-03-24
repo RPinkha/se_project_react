@@ -16,7 +16,7 @@ export default function ItemModal({ activeModal, card, handleCloseClick }) {
         <img src={card.link} alt={card.name} className="modal__image" />
         <div className="modal__information">
           <p className="modal__information-title">{card.name}</p>
-          <p className="modal__infomation-weather">Weather: {card.weather}</p>
+          <p className="modal__information-weather">Weather: {card.weather}</p>
         </div>
       </div>
     </div>

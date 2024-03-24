@@ -74,6 +74,10 @@
   right: 28px;
 }
 
+.modal__close:hover {
+  cursor: pointer;
+}
+
 .modal__label {
   display: flex;
   flex-direction: column;

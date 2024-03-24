@@ -1,5 +1,5 @@
 import "./WeatherCard.css";
-import weatherImage from "../../assets/Weather - Day/Clear Day.png";
+import weatherImage from "../../assets/day/clear.png";
 
 function WeatherCard({ weatherData }) {
   return (

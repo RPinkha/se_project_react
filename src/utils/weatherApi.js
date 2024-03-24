@@ -15,8 +15,13 @@ export const filterWeatherData = (data) => {
   result.temp = { F: data.main.temp };
   result.city = data.name;
   result.type = getWeatherType(result.temp.F);
-
+  result.condition = weatherCondition(data.weather[0].id);
+  result.isDay = isDay(data.sys, Date.now() / 1000);
   return result;
+};
+
+const isDay = ({ sunrise, sunset }, timeNow) => {
+  return timeNow > sunrise && timeNow < sunset;
 };
 
 const getWeatherType = (temperature) => {
@@ -26,5 +31,24 @@ const getWeatherType = (temperature) => {
     return "warm";
   } else {
     return "cold";
+  }
+};
+
+const weatherCondition = (conditionCode) => {
+  switch (true) {
+    case Math.floor(conditionCode / 100) == 2:
+      return "stormy";
+    case conditionCode === 800:
+      return "clear";
+    case Math.floor(conditionCode / 100) == 8:
+      return "cloudy";
+    case Math.floor(conditionCode / 100) == 5:
+      return "rainy";
+    case Math.floor(conditionCode / 100) == 3:
+      return "rainy";
+    case Math.floor(conditionCode / 100) == 6:
+      return "snowy";
+    case Math.floor(conditionCode / 100) == 7:
+      return "foggy";
   }
 };

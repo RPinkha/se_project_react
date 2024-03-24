@@ -21,7 +21,7 @@ function App() {
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, serSelectedCard] = useState("");
+  const [selectedCard, serSelectedCard] = useState({ name: "", link: "" });
 
   const handleAddClick = () => {
     setActiveModal("add-garment");

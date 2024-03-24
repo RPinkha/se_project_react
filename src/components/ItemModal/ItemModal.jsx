@@ -1,12 +1,13 @@
 import "./ItemModal.css";
 
-export default function ItemModal({ activeModal, card, handleCloseClick }) {
+export default function ItemModal({
+  activeModal,
+  card,
+  handleCloseClick,
+  isOpen,
+}) {
   return (
-    <div
-      className={`modal${
-        activeModal === "card-preview" ? " modal_opened" : ""
-      }`}
-    >
+    <div className={`modal${isOpen ? " modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_image">
         <button
           type="button"

@@ -84,7 +84,7 @@ function App() {
               type="radio"
               id="Hot"
               name="weather type"
-            ></input>
+            />
             Hot
           </label>
           <label
@@ -96,7 +96,7 @@ function App() {
               type="radio"
               id="Warm"
               name="weather type"
-            ></input>
+            />
             Warm
           </label>
           <label
@@ -108,7 +108,7 @@ function App() {
               type="radio"
               id="Cold"
               name="weather type"
-            ></input>
+            />
             Cold
           </label>
         </fieldset>

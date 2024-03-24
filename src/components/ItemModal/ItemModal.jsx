@@ -12,7 +12,7 @@ export default function ItemModal({ activeModal, card, handleCloseClick }) {
           type="button"
           className="modal__close"
           onClick={handleCloseClick}
-        ></button>
+        />
         <img src={card.link} alt={card.name} className="modal__image" />
         <div className="modal__information">
           <p className="modal__information-title">{card.name}</p>

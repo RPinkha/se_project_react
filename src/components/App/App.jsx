@@ -7,11 +7,19 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import "./App.css";
 
-import { getWeather } from "../../utils/weatherApi";
-import { apiKey, coordinates } from "../../utils/constants";
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import {
+  apiKey,
+  coordinates,
+  defaultClothingItems,
+} from "../../utils/constants";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({ type: "", temp: 200 });
+  const [weatherData, setWeatherData] = useState({
+    type: "",
+    temp: { F: 999 },
+    city: "",
+  });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, serSelectedCard] = useState("");
 
@@ -31,7 +39,8 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
-        setWeatherData({ ...weatherData });
+        const filteredData = filterWeatherData(data);
+        setWeatherData(filteredData);
       })
       .catch(console.error);
   }, []);
@@ -39,7 +48,7 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header handleAddClick={handleAddClick} />
+        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <Footer />
       </div>

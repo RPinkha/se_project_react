@@ -5,7 +5,6 @@ function ModalWithForm({
   children,
   buttonText,
   formTitle,
-  activeModal,
   handleCloseClick,
   isOpen,
 }) {

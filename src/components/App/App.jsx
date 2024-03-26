@@ -8,11 +8,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import "./App.css";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import {
-  apiKey,
-  coordinates,
-  defaultClothingItems,
-} from "../../utils/constants";
+import { apiKey, coordinates } from "../../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -45,6 +41,20 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (evt) => {
+      if (evt.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="page">
       <div className="page__content">
@@ -55,7 +65,6 @@ function App() {
       <ModalWithForm
         buttonText="Add garment"
         formTitle="New garment"
-        activeModal={activeModal}
         handleCloseClick={closeActiveModal}
         isOpen={activeModal === "add-garment"}
       >
@@ -115,7 +124,6 @@ function App() {
         </fieldset>
       </ModalWithForm>
       <ItemModal
-        activeModal={activeModal}
         card={selectedCard}
         handleCloseClick={closeActiveModal}
         isOpen={activeModal === "card-preview"}

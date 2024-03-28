@@ -31,3 +31,10 @@
   margin: 0;
   padding: 12px 0 32px 32px;
 }
+
+@media screen and (max-width: 700px) {
+  .modal__container_type_image {
+    width: 343px;
+    height: 463px;
+  }
+}

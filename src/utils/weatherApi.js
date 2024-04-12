@@ -42,13 +42,14 @@ const weatherCondition = (conditionCode) => {
       return "clear";
     case Math.floor(conditionCode / 100) == 8:
       return "cloudy";
-    case Math.floor(conditionCode / 100) == 5:
-      return "rainy";
-    case Math.floor(conditionCode / 100) == 3:
+    case Math.floor(conditionCode / 100) == 5 ||
+      Math.floor(conditionCode / 100) == 3:
       return "rainy";
     case Math.floor(conditionCode / 100) == 6:
       return "snowy";
-    case Math.floor(conditionCode / 100) == 7:
+    case conditionCode === 741:
       return "foggy";
+    default:
+      return "default";
   }
 };

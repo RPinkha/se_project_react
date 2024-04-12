@@ -38,17 +38,17 @@ const weatherCondition = (conditionCode) => {
   switch (true) {
     case Math.floor(conditionCode / 100) == 2:
       return "stormy";
-    case conditionCode === 800:
-      return "clear";
-    case Math.floor(conditionCode / 100) == 8:
-      return "cloudy";
-    case Math.floor(conditionCode / 100) == 5 ||
-      Math.floor(conditionCode / 100) == 3:
+    case Math.floor(conditionCode / 100) == 3 ||
+      Math.floor(conditionCode / 100) == 5:
       return "rainy";
     case Math.floor(conditionCode / 100) == 6:
       return "snowy";
     case conditionCode === 741:
       return "foggy";
+    case conditionCode === 800:
+      return "clear";
+    case Math.floor(conditionCode / 100) == 8:
+      return "cloudy";
     default:
       return "default";
   }

@@ -76,6 +76,11 @@ export const weatherOptions = [
     url: new URL("../assets/day/stormy.png", import.meta.url).href,
   },
   {
+    day: true,
+    condition: "default",
+    url: new URL("../assets/day/default.png", import.meta.url).href,
+  },
+  {
     day: false,
     condition: "clear",
     url: new URL("../assets/night/clear.png", import.meta.url).href,
@@ -104,5 +109,10 @@ export const weatherOptions = [
     day: false,
     condition: "stormy",
     url: new URL("../assets/night/stormy.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "default",
+    url: new URL("../assets/night/default.png", import.meta.url).href,
   },
 ];

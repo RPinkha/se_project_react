@@ -17,7 +17,8 @@ function App() {
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, serSelectedCard] = useState({ name: "", link: "" });
+  const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -25,7 +26,7 @@ function App() {
 
   const handleCardClick = (card) => {
     setActiveModal("card-preview");
-    serSelectedCard(card);
+    setSelectedCard(card);
   };
 
   const closeActiveModal = () => {

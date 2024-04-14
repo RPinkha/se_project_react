@@ -20,6 +20,10 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   const [mobileMenu, setMobileMenu] = useState(false);
 
+  const toggleMobileMenu = () => {
+    setMobileMenu(true);
+  };
+
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -59,7 +63,11 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+        <Header
+          toggleMobileMenu={toggleMobileMenu}
+          handleAddClick={handleAddClick}
+          weatherData={weatherData}
+        />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <Footer />
       </div>

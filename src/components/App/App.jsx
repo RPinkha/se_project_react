@@ -21,7 +21,7 @@ function App() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const toggleMobileMenu = () => {
-    setMobileMenu(true);
+    setMobileMenu(!mobileMenu);
   };
 
   const handleAddClick = () => {

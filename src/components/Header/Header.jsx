@@ -2,7 +2,7 @@ import "./Header.css";
 import logo from "../../assets/Logo.svg";
 import avatar from "../../assets/Avatar.png";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, toggleMobileMenu }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -21,6 +21,10 @@ function Header({ handleAddClick, weatherData }) {
         <p className="header__username">Terrence Tegegne</p>
         <img src={avatar} alt="User Avatar" className="header__avatar" />
       </div>
+      <button
+        className="header__mobile-menu-toggle"
+        onClick={toggleMobileMenu}
+      />
     </header>
   );
 }

@@ -38,10 +38,7 @@ function Header({
           <img src={avatar} alt="User Avatar" className="header__avatar" />
         </div>
       </div>
-      <button
-        className="header__mobile-menu-toggle"
-        onClick={toggleMobileMenu}
-      />
+      <button className="header__user-menu-toggle" onClick={toggleMobileMenu} />
     </header>
   );
 }

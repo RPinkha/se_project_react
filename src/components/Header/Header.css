@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   padding: 32px 0 28px;
+  position: relative;
 }
 
 .header__logo {
@@ -84,7 +85,7 @@
   height: 40px;
 }
 
-.header__mobile-menu-toggle {
+.header__user-menu-toggle {
   display: none;
   background-color: #ffffff;
   padding: 0;
@@ -97,14 +98,55 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px 12px;
+  position: absolute;
+  top: 18px;
+  right: 0px;
 }
 
 @media (max-width: 700px) {
-  .header__mobile-menu-toggle {
+  .header {
+    padding-top: 18px;
+    padding-bottom: 16px;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .header__user-menu-toggle {
     display: block;
+  }
+
+  .header__user-menu {
+    display: none;
+    position: absolute;
+    height: 208px;
+    width: 100%;
+    top: 18px;
+    left: 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    z-index: 999;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .header__user-menu_open {
+    display: flex;
+  }
+
+  .header__user-menu_closed {
+    display: none;
   }
 
   .header__user-menu-close {
     display: block;
+  }
+
+  .header__add-clothes-button {
+    background-color: #ffffff;
+    margin: 0;
   }
 }

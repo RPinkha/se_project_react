@@ -30,7 +30,13 @@ function Header({
           className="header__user-menu-close"
           onClick={toggleMobileMenu}
         />
-        <button className="header__add-clothes-button" onClick={handleAddClick}>
+        <button
+          className="header__add-clothes-button"
+          onClick={() => {
+            handleAddClick();
+            toggleMobileMenu();
+          }}
+        >
           + Add clothes
         </button>
         <div className="header__user-container">

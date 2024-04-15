@@ -23,8 +23,8 @@ function ModalWithForm({
   }, [handleCloseClick]);
 
   return (
-    <div className={`modal${isOpen ? " modal_opened" : ""}`}>
-      <div className="modal__container">
+    <div className={`modal${isOpen ? " modal_opened" : ""} modal_add-clothes`}>
+      <div className="modal__container modal__container_add-clothes">
         <button
           type="button"
           className="modal__close"

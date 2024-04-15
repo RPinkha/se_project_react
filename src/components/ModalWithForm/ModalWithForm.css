@@ -138,10 +138,10 @@
 }
 
 @media screen and (max-width: 700px) {
-  .modal {
+  .modal_add-clothes {
     align-items: flex-end;
   }
-  .modal__container {
+  .modal__container_add-clothes {
     width: 100vw;
     max-width: 100%;
     border-bottom-left-radius: 0;

@@ -40,7 +40,7 @@ function Header({
           + Add clothes
         </button>
         <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
+          <p className="header__username">Ruven Pinkhasov</p>
           <img src={avatar} alt="User Avatar" className="header__avatar" />
         </div>
       </div>

@@ -51,11 +51,7 @@
 
 .header__user-menu-close {
   display: none;
-  /* background-image: url(../../assets/Close.svg); */
-  /*   position: absolute; */
-  /*   background-repeat: no-repeat; */
   background-color: transparent;
-  /*   background-size: cover; */
   width: 21px;
   height: 21px;
   padding: 0;

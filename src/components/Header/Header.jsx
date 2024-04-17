@@ -45,8 +45,16 @@ function Header({
         </div>
       </div>
       <button className="header__user-menu-toggle" onClick={toggleMobileMenu} />
-      <div className="header__user-menu-line header__user-menu-line_top" />
-      <div className="header__user-menu-line header__user-menu-line_bottom" />
+      <div
+        className={`header__user-menu-line header__user-menu-line_top${
+          isMobileMenuOpen ? " header__user-menu-line_top-rotate" : ""
+        }`}
+      />
+      <div
+        className={`header__user-menu-line header__user-menu-line_bottom${
+          isMobileMenuOpen ? " header__user-menu-line_bottom-rotate" : ""
+        }`}
+      />
     </header>
   );
 }

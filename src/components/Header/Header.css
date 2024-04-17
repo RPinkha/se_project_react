@@ -3,6 +3,24 @@
   src: url("../../vendor/fonts/CabinetGrotesk-Bold.otf") format("opentype");
 }
 
+@keyframes rotate-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: translateY(5px) rotate(45deg);
+  }
+}
+
+@keyframes rotate-couter-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -33,11 +51,11 @@
 
 .header__user-menu-close {
   display: none;
-  background-image: url(../../assets/Close.svg);
-  position: absolute;
-  background-repeat: no-repeat;
+  /* background-image: url(../../assets/Close.svg); */
+  /*   position: absolute; */
+  /*   background-repeat: no-repeat; */
   background-color: transparent;
-  background-size: cover;
+  /*   background-size: cover; */
   width: 21px;
   height: 21px;
   padding: 0;
@@ -108,6 +126,7 @@
   position: absolute;
   right: 8px;
   pointer-events: none;
+  z-index: 999;
 }
 
 .header__user-menu-line_top {
@@ -180,5 +199,13 @@
 
   .header__user-menu-line {
     display: block;
+  }
+
+  .header__user-menu-line_top-rotate {
+    animation: rotate-clockwise 1s forwards;
+  }
+
+  .header__user-menu-line_bottom-rotate {
+    animation: rotate-couter-clockwise 1s forwards;
   }
 }

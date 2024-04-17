@@ -94,10 +94,6 @@
   width: 44px;
   height: 44px;
   cursor: pointer;
-  /*   background-image: url(../../assets/User-menu.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 28px 12px; */
   position: absolute;
   top: 18px;
   right: 0px;
@@ -111,6 +107,7 @@
   background-color: #000;
   position: absolute;
   right: 8px;
+  pointer-events: none;
 }
 
 .header__user-menu-line_top {
@@ -121,10 +118,24 @@
   top: 44px;
 }
 
+@media (max-width: 850px) {
+  .header {
+    padding: 19px 0 17px;
+  }
+
+  .header__user-menu {
+    flex-direction: column-reverse;
+  }
+
+  .header__add-clothes-button {
+    margin: 0;
+    align-self: flex-start;
+  }
+}
+
 @media (max-width: 700px) {
   .header {
-    padding-top: 18px;
-    padding-bottom: 16px;
+    padding: 18px 0 16px;
     flex-direction: column;
     gap: 32px;
     align-items: flex-start;
@@ -144,7 +155,6 @@
     border-radius: 10px;
     background-color: #ffffff;
     z-index: 999;
-    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     gap: 24px;
@@ -165,7 +175,7 @@
 
   .header__add-clothes-button {
     background-color: #ffffff;
-    margin: 0;
+    align-self: auto;
   }
 
   .header__user-menu-line {

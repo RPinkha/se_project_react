@@ -3,24 +3,6 @@
   src: url("../../vendor/fonts/CabinetGrotesk-Bold.otf") format("opentype");
 }
 
-@keyframes rotate-clockwise {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: translateY(5px) rotate(45deg);
-  }
-}
-
-@keyframes rotate-counter-clockwise {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: translateY(-5px) rotate(-45deg);
-  }
-}
-
 .header {
   display: flex;
   align-items: center;
@@ -123,6 +105,7 @@
   right: 8px;
   pointer-events: none;
   z-index: 999;
+  transition: 0.5s;
 }
 
 .header__user-menu-line_top {
@@ -198,10 +181,10 @@
   }
 
   .header__user-menu-line_top-rotate {
-    animation: rotate-clockwise 1s forwards;
+    transform: translateY(5px) rotate(45deg);
   }
 
   .header__user-menu-line_bottom-rotate {
-    animation: rotate-counter-clockwise 1s forwards;
+    transform: translateY(-5px) rotate(-45deg);
   }
 }

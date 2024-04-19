@@ -12,7 +12,10 @@ export const getWeather = ({ latitude, longitude }, apiKey) => {
 
 export const filterWeatherData = (data) => {
   const result = {};
-  result.temp = { F: data.main.temp };
+  result.temp = {
+    F: Math.round(data.main.temp),
+    C: Math.round(((data.main.temp - 32) * 5) / 9),
+  };
   result.city = data.name;
   result.type = getWeatherType(result.temp.F);
   result.condition = weatherCondition(data.weather[0].id);

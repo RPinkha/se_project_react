@@ -2,8 +2,13 @@ import "./ToggleSwitch.css";
 
 function ToggleSwitch() {
   return (
-    <div className="toggle-switch">
-      <input type="checkbox" className="toggle-switch__box" />
+    <div class="toggle-switch">
+      <label className="toggle-switch__box">
+        <input className="toggle-switch__checkbox" type="checkbox" />
+        <div className="toggle-switch__circle toggle-switch__circle_C"></div>
+        <p className="toggle-switch__text toggle-switch__text_F">F</p>
+        <p className="toggle-switch__text toggle-switch__text_C">C</p>
+      </label>
     </div>
   );
 }

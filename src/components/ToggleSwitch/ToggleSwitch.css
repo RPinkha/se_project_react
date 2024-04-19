@@ -1,0 +1,73 @@
+.toggle-switch__box {
+  position: relative;
+  border: 2px solid #7e7e7e;
+  width: 56px;
+  height: 28px;
+  border-radius: 20px;
+  display: flex;
+  transition: 0.5s;
+  box-sizing: border-box;
+}
+
+.toggle-switch__box:hover {
+  cursor: pointer;
+  border-color: #000;
+}
+
+.toggle-switch__circle {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  height: 28px;
+  background: black;
+  width: 28px;
+  z-index: 2;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.toggle-switch__box:hover .toggle-switch__circle_F {
+  transform: translateX(2px);
+}
+
+.toggle-switch__box:hover .toggle-switch__circle_C {
+  transform: translateX(-2px);
+}
+
+.toggle-switch__checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle-switch__text {
+  position: absolute;
+  font-family: Arial, Helvetica;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  mix-blend-mode: difference;
+  color: white;
+  z-index: 3;
+  width: 28px;
+  align-self: center;
+  font-weight: 700;
+  left: -2px;
+  opacity: 0.5;
+}
+
+.toggle-switch__text_C {
+  left: 26px;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__text_C,
+.toggle-switch__checkbox:not(:checked) ~ .toggle-switch__text_F,
+.toggle-switch__box:hover .toggle-switch__text {
+  opacity: 1;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__circle {
+  left: 26px;
+}

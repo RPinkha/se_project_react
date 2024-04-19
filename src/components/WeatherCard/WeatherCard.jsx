@@ -11,9 +11,13 @@ function WeatherCard({ weatherData }) {
     );
   });
 
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
   return (
     <section className="weather-card">
-      <p className="weather-card__temperature">{weatherData.temp.F}° F</p>
+      <p className="weather-card__temperature">
+        {`${weatherData.temp[currentTemperatureUnit]}°${currentTemperatureUnit}`}
+      </p>
       <img
         src={weatherOption[0]?.url}
         alt={weatherOption[0]?.condition}

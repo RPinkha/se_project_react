@@ -1,4 +1,5 @@
 import "./Header.css";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../assets/Logo.svg";
 import avatar from "../../assets/Avatar.png";
 
@@ -30,15 +31,18 @@ function Header({
           className="header__user-menu-close"
           onClick={toggleMobileMenu}
         />
-        <button
-          className="header__add-clothes-button"
-          onClick={() => {
-            handleAddClick();
-            toggleMobileMenu();
-          }}
-        >
-          + Add clothes
-        </button>
+        <div className="header__user-menu-buttons">
+          <ToggleSwitch />
+          <button
+            className="header__add-clothes-button"
+            onClick={() => {
+              handleAddClick();
+              toggleMobileMenu();
+            }}
+          >
+            + Add clothes
+          </button>
+        </div>
         <div className="header__user-container">
           <p className="header__username">Ruven Pinkhasov</p>
           <img src={avatar} alt="User Avatar" className="header__avatar" />

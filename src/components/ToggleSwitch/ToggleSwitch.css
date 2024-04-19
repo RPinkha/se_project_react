@@ -1,3 +1,7 @@
+.toggle-switch {
+  align-self: center;
+}
+
 .toggle-switch__box {
   position: relative;
   border: 2px solid #7e7e7e;
@@ -48,6 +52,7 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
+  margin: 0;
   mix-blend-mode: difference;
   color: white;
   z-index: 3;
@@ -56,6 +61,7 @@
   font-weight: 700;
   left: -2px;
   opacity: 0.5;
+  transition: 0.5s;
 }
 
 .toggle-switch__text_C {

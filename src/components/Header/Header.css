@@ -26,6 +26,14 @@
 
 .header__user-menu {
   margin-left: auto;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.header__user-menu-buttons {
+  gap: 20px;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -48,7 +56,6 @@
 }
 
 .header__add-clothes-button {
-  margin: 0 20px 0 auto;
   padding: 0;
   border: 0;
   font-family: "Cabinet Grotesk";

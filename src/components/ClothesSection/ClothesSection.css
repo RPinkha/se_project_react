@@ -1,5 +1,28 @@
 .clothes-section {
   width: 100%;
+  padding-top: 35px;
+}
+
+.clothes-section__head {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-family: "Cabinet Grotesk";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  color: #000000;
+}
+
+.clothes-section__title {
+  margin: 0;
+}
+
+.clothes-section__add-button {
+  opacity: 0.6;
+  padding: 0;
+  border: 0;
+  background-color: #f3f3f3;
 }
 
 .clothes-section__cards__list {

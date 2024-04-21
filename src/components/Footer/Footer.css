@@ -6,7 +6,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 24px;
+  padding: 85px 0 24px;
 }
 
 .footer__developer {

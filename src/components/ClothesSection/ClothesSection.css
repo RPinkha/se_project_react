@@ -1,0 +1,12 @@
+.clothes-section {
+  width: 100%;
+}
+
+.clothes-section__cards__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, 325px);
+}

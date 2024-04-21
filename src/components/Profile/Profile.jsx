@@ -4,7 +4,7 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 
 function Profile() {
   return (
-    <div className="Profile">
+    <div className="profile">
       <SideBar />
       <ClothesSection />
     </div>

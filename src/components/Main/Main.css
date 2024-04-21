@@ -3,10 +3,6 @@
   src: url("../../vendor/fonts/CabinetGrotesk-Bold.otf") format("opentype");
 }
 
-.main {
-  padding-bottom: 85px;
-}
-
 .cards__title {
   font-size: 20px;
   line-height: 25px;

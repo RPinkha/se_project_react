@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import Profile from "../Profile/Profile";
 
 //styles
 import "./App.css";
@@ -97,7 +98,7 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<p>Profile Page</p>} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           <Footer />
         </div>

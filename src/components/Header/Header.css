@@ -81,7 +81,14 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
+}
+
+.header__link,
+.header__link:visited,
+.header__link:hover,
+.header__link:active {
   text-decoration: none;
+  color: #000;
 }
 
 .header__avatar {

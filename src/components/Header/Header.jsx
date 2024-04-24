@@ -18,7 +18,7 @@ function Header({
 
   return (
     <header className="header">
-      <Link to="/">
+      <Link to="/" className="header__link">
         <img src={logo} alt="WTWR Logo" className="header__logo" />
       </Link>
       <p className="header__date-and-location">
@@ -47,7 +47,7 @@ function Header({
             + Add clothes
           </button>
         </div>
-        <Link to="/profile">
+        <Link to="/profile" className="header__link">
           <div className="header__user-container">
             <p className="header__username">Ruven Pinkhasov</p>
             <img src={avatar} alt="User Avatar" className="header__avatar" />

@@ -49,7 +49,7 @@ function Header({
         </div>
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
-            <p className="header__username">Terrence Tegegne</p>
+            <p className="header__username">Ruven Pinkhasov</p>
             <img src={avatar} alt="User Avatar" className="header__avatar" />
           </div>
         </Link>

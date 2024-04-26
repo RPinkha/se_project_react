@@ -1,6 +1,8 @@
 .clothes-section {
   width: 100%;
-  padding-top: 35px;
+  padding-top: 31px;
+  max-width: 1015px;
+  align-self: flex-end;
 }
 
 .clothes-section__head {

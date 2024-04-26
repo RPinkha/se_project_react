@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
   gap: 12px;
+  padding-top: 15px;
 }
 
 .sidebar__username {
@@ -9,6 +10,10 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
+  width: 157px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .sidebar__avatar {

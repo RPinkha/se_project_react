@@ -1,11 +1,11 @@
 import "./ItemCard.css";
 
-function ItemCard({ item, handleCardClick }) {
+function ItemCard({ item, onCardClick }) {
   return (
     <li
       className="card"
       onClick={() => {
-        handleCardClick(item);
+        onCardClick(item);
       }}
     >
       <h2 className="card__title">{item.name}</h2>

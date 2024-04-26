@@ -27,7 +27,7 @@ function App() {
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
+  const [selectedCard, setSelectedCard] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
@@ -63,7 +63,14 @@ function App() {
 
   const handleCardDelete = (card) => {
     console.log(card);
-    deleteItem(card._id);
+    deleteItem(card._id)
+      .then((card) => {
+        setClothingItems((currentItems) =>
+          currentItems.filter((item) => item._id !== card._id)
+        );
+      })
+      .catch(console.error);
+    console.log(clothingItems);
     closeActiveModal(); //change this to the confirmation modal
   };
 

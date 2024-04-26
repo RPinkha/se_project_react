@@ -4,6 +4,10 @@ import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ handleCloseClick, isOpen }) {
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [weatherType, setWeatherType] = useState("");
+
   return (
     <ModalWithForm
       buttonText="Add garment"

@@ -56,7 +56,9 @@ function App() {
   };
 
   const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
-    addItem(name, weatherType, imageUrl);
+    addItem(name, weatherType, imageUrl).then((newItem) =>
+      setClothingItems([...clothingItems, newItem])
+    );
   };
 
   const handleCardDelete = (id) => {

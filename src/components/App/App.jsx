@@ -61,8 +61,10 @@ function App() {
     );
   };
 
-  const handleCardDelete = (id) => {
-    deleteItem(id);
+  const handleCardDelete = (card) => {
+    console.log(card);
+    deleteItem(card._id);
+    closeActiveModal(); //change this to the confirmation modal
   };
 
   useEffect(() => {
@@ -141,6 +143,7 @@ function App() {
           card={selectedCard}
           handleCloseClick={closeActiveModal}
           isOpen={activeModal === "card-preview"}
+          handleCardDelete={handleCardDelete}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

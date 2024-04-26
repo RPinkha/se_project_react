@@ -1,7 +1,12 @@
 import "./ItemModal.css";
 import { useEffect } from "react";
 
-export default function ItemModal({ card, handleCloseClick, isOpen }) {
+export default function ItemModal({
+  card,
+  handleCloseClick,
+  isOpen,
+  handleCardDelete,
+}) {
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (e.target.classList.contains("modal")) {
@@ -29,6 +34,13 @@ export default function ItemModal({ card, handleCloseClick, isOpen }) {
           <p className="modal__information-title">{card.name}</p>
           <p className="modal__information-weather">Weather: {card.weather}</p>
         </div>
+        <button
+          type="button"
+          className="modal__delete-card"
+          onClick={handleCardDelete}
+        >
+          Delete item
+        </button>
       </div>
     </div>
   );

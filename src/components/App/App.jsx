@@ -14,7 +14,7 @@ import "./App.css";
 
 //constants
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems, addItem } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 import { apiKey, coordinates } from "../../utils/constants";
 
 //contexts
@@ -57,6 +57,10 @@ function App() {
 
   const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
     addItem(name, weatherType, imageUrl);
+  };
+
+  const handleCardDelete = (id) => {
+    deleteItem(id);
   };
 
   useEffect(() => {
@@ -117,6 +121,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
+                  handleAddClick={handleAddClick}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                 />

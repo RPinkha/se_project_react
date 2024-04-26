@@ -25,6 +25,7 @@
   padding: 0;
   border: 0;
   background-color: #f3f3f3;
+  cursor: pointer;
 }
 
 .clothes-section__cards__list {

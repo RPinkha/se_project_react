@@ -16,4 +16,10 @@ function addItem(name, weather, imageUrl) {
   }).then(checkResponse);
 }
 
-export { getItems, addItem };
+function deleteItem(id) {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+  }).then(checkResponse);
+}
+
+export { getItems, addItem, deleteItem };

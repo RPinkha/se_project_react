@@ -5,7 +5,7 @@ function getItems() {
 }
 
 function addItem(name, weather, imageUrl) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

@@ -55,6 +55,10 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
+  const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
+    addItem(name, weatherType, imageUrl);
+  };
+
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
@@ -124,6 +128,7 @@ function App() {
         <AddItemModal
           handleCloseClick={closeActiveModal}
           isOpen={activeModal === "add-garment"}
+          onAddSubmit={handleAddSubmit}
         />
         <ItemModal
           card={selectedCard}

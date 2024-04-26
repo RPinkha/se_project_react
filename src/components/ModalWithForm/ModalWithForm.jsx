@@ -7,6 +7,7 @@ function ModalWithForm({
   formTitle,
   handleCloseClick,
   isOpen,
+  onSubmit,
 }) {
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -31,7 +32,7 @@ function ModalWithForm({
           onClick={handleCloseClick}
         ></button>
         <p className="modal__title">{formTitle}</p>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={onSubmit}>
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}

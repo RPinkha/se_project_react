@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./AddItemModal.css";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -7,6 +6,18 @@ function AddItemModal({ handleCloseClick, isOpen }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weatherType, setWeatherType] = useState("");
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleImageUrlChange = (e) => {
+    setImageUrl(e.target.value);
+  };
+
+  const handleWeatherTypeChange = (e) => {
+    setWeatherType(e.target.value);
+  };
 
   return (
     <ModalWithForm
@@ -22,6 +33,8 @@ function AddItemModal({ handleCloseClick, isOpen }) {
           className="modal__input"
           id="Name"
           placeholder="Name"
+          value={name}
+          onChange={handleNameChange}
         />
       </label>
       <label htmlFor="ImageURL" className="modal__label">
@@ -31,6 +44,8 @@ function AddItemModal({ handleCloseClick, isOpen }) {
           className="modal__input"
           id="ImageURL"
           placeholder="Image URL"
+          value={imageUrl}
+          onChange={handleImageUrlChange}
         />
       </label>
       <fieldset className="modal__fieldset">
@@ -41,6 +56,8 @@ function AddItemModal({ handleCloseClick, isOpen }) {
             type="radio"
             id="Hot"
             name="weather type"
+            value={weatherType}
+            onChange={handleWeatherTypeChange}
           />
           Hot
         </label>

@@ -13,6 +13,7 @@ import "./App.css";
 
 //constants
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { getItems } from "../../utils/api";
 import { apiKey, coordinates } from "../../utils/constants";
 
 //contexts
@@ -29,6 +30,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -63,6 +65,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (evt) => {
       if (evt.key === "Escape") {
         closeActiveModal();
@@ -92,12 +102,21 @@ function App() {
             <Route
               path="/"
               element={
-                <Main weatherData={weatherData} onCardClick={handleCardClick} />
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
               }
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
           <Footer />

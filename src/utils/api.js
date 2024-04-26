@@ -1,13 +1,19 @@
-const baseUrl = "http://localhost:3001";
+import { baseUrl, checkResponse } from "./constants";
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
-export { getItems };
+function addItem(name, weather, imageUrl) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: name,
+      weather: weather,
+      imageUrl: imageUrl,
+    }),
+  }).then(checkResponse);
+}
+
+export { getItems, addItem };

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 
@@ -13,12 +14,11 @@ import "./App.css";
 
 //constants
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems } from "../../utils/api";
+import { getItems, addItem } from "../../utils/api";
 import { apiKey, coordinates } from "../../utils/constants";
 
 //contexts
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
-import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({

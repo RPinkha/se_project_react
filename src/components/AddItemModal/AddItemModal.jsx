@@ -25,7 +25,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     setName("");
     setImageUrl("");
     setWeatherType("");
-    handleCloseClick();
   };
 
   return (

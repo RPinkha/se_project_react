@@ -55,7 +55,7 @@ function App() {
 
   const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
     addItem(name, weatherType, imageUrl)
-      .then((newItem) => setClothingItems([...clothingItems, newItem]))
+      .then((newItem) => setClothingItems([newItem, ...clothingItems]))
       .catch(console.error);
   };
 
@@ -85,7 +85,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        setClothingItems(data);
+        setClothingItems(data.reverse());
       })
       .catch(console.error);
   }, []);

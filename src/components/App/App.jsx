@@ -69,9 +69,10 @@ function App() {
           currentItems.filter((item) => item._id !== card._id)
         );
       })
+      .then(() => {
+        closeActiveModal();
+      })
       .catch(console.error);
-    console.log(clothingItems);
-    closeActiveModal(); //change this to the confirmation modal
   };
 
   useEffect(() => {

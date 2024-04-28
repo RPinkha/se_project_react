@@ -105,6 +105,20 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (e.target.classList.contains("modal")) {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider

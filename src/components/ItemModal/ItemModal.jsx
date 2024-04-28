@@ -1,5 +1,4 @@
 import "./ItemModal.css";
-import { useEffect } from "react";
 
 export default function ItemModal({
   card,
@@ -7,20 +6,6 @@ export default function ItemModal({
   isOpen,
   handleCardDelete,
 }) {
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (e.target.classList.contains("modal")) {
-        handleCloseClick();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [handleCloseClick]);
-
   return (
     <div className={`modal${isOpen ? " modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_image">

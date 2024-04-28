@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./ModalWithForm.css";
 
 function ModalWithForm({
@@ -9,20 +8,6 @@ function ModalWithForm({
   isOpen,
   onSubmit,
 }) {
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (e.target.classList.contains("modal")) {
-        handleCloseClick();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [handleCloseClick]);
-
   return (
     <div className={`modal${isOpen ? " modal_opened" : ""} modal_add-clothes`}>
       <div className="modal__container modal__container_add-clothes">

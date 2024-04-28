@@ -1,4 +1,5 @@
-import { baseUrl, checkResponse } from "./constants";
+import { baseUrl } from "./constants";
+import { checkResponse } from "./utils";
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(checkResponse);

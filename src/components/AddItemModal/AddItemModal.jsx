@@ -22,10 +22,15 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddSubmit({ name, weatherType, imageUrl });
-    setName("");
-    setImageUrl("");
-    setWeatherType("");
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setImageUrl("");
+      setWeatherType("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm

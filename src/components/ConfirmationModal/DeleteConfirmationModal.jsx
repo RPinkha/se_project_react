@@ -1,6 +1,11 @@
 import "./DeleteConfirmationModal.css";
 
-function DeleteConfirmationModal({ handleCloseClick, isOpen }) {
+function DeleteConfirmationModal({
+  handleCloseClick,
+  isOpen,
+  handleCardDelete,
+  card,
+}) {
   return (
     <div
       className={`modal${
@@ -17,8 +22,20 @@ function DeleteConfirmationModal({ handleCloseClick, isOpen }) {
           Are you sure you want to delete this item? This action is
           irreversible.
         </p>
-        <button className="modal-confirmation__delete">Yes, delete item</button>
-        <button className="modal-confirmation__cancel">Cancel</button>
+        <button
+          type="button"
+          className="modal-confirmation__delete"
+          onClick={() => handleCardDelete(card)}
+        >
+          Yes, delete item
+        </button>
+        <button
+          type="button"
+          className="modal-confirmation__cancel"
+          onClick={handleCloseClick}
+        >
+          Cancel
+        </button>
       </div>
     </div>
   );

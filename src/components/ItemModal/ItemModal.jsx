@@ -7,7 +7,7 @@ export default function ItemModal({
   onDeleteClick,
 }) {
   return (
-    <div className={`modal${isOpen ? " modal_opened" : ""}`}>
+    <div className={`modal${isOpen ? " modal_opened" : ""} modal_item`}>
       <div className="modal__container modal__container_type_image">
         <button
           type="button"

@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
+import DeleteConfirmationModal from "../ConfirmationModal/DeleteConfirmationModal";
 import Profile from "../Profile/Profile";
 
 //styles
@@ -165,6 +166,10 @@ function App() {
           handleCloseClick={closeActiveModal}
           isOpen={activeModal === "card-preview"}
           handleCardDelete={handleCardDelete}
+        />
+        <DeleteConfirmationModal
+          handleCloseClick={closeActiveModal}
+          isOpen={activeModal === "delete-confirmation"}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

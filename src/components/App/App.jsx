@@ -46,6 +46,10 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleCardDeleteClick = () => {
+    setActiveModal("delete-confirmation");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -165,11 +169,13 @@ function App() {
           card={selectedCard}
           handleCloseClick={closeActiveModal}
           isOpen={activeModal === "card-preview"}
-          handleCardDelete={handleCardDelete}
+          onDeleteClick={handleCardDeleteClick}
         />
         <DeleteConfirmationModal
           handleCloseClick={closeActiveModal}
           isOpen={activeModal === "delete-confirmation"}
+          card={selectedCard}
+          handleCardDelete={handleCardDelete}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

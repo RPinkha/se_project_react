@@ -4,7 +4,7 @@ export default function ItemModal({
   card,
   handleCloseClick,
   isOpen,
-  handleCardDelete,
+  onDeleteClick,
 }) {
   return (
     <div className={`modal${isOpen ? " modal_opened" : ""}`}>
@@ -22,7 +22,7 @@ export default function ItemModal({
         <button
           type="button"
           className="modal__delete-card"
-          onClick={() => handleCardDelete(card)}
+          onClick={onDeleteClick}
         >
           Delete item
         </button>

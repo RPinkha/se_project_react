@@ -54,6 +54,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
+          required
         />
       </label>
       <label htmlFor="ImageURL" className="modal__label">
@@ -65,9 +66,10 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
           placeholder="Image URL"
           value={imageUrl}
           onChange={handleImageUrlChange}
+          required
         />
       </label>
-      <fieldset className="modal__fieldset">
+      <fieldset className="modal__fieldset" required>
         <legend className="modal__legend">Select weather type:</legend>
         <label htmlFor="Hot" className="modal__label modal__label_type_radio">
           <input

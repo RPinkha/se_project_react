@@ -4,8 +4,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
+
   const [imageUrl, setImageUrl] = useState("");
+  const [imageUrlError, setImageUrlError] = useState("");
+
   const [weatherType, setWeatherType] = useState("");
+  const [weatherTypeError, setWeatherTypeError] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);

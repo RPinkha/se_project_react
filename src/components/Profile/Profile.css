@@ -3,3 +3,10 @@
   flex-direction: row;
   gap: 116px;
 }
+
+@media (max-width: 1034px) {
+  .profile {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

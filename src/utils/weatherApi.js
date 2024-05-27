@@ -1,9 +1,14 @@
 import { checkResponse } from "./utils";
+import { getCurrentPosition } from "./utils";
 
-export const getWeather = ({ latitude, longitude }, apiKey) => {
-  return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-  ).then((res) => checkResponse(res));
+export const getWeather = (apiKey) => {
+  return getCurrentPosition() // Call getCurrentPosition to get coordinates
+    .then(({ latitude, longitude }) => {
+      return fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+      );
+    })
+    .then((res) => checkResponse(res));
 };
 
 export const filterWeatherData = (data) => {

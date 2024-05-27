@@ -7,21 +7,22 @@ export function checkResponse(res) {
 
 //-----------------FUNCTION TO GET USER LOCATION------------------>>
 export const getCurrentPosition = () => {
-  function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    const userCoordinates = { latitude, longitude };
+  return new Promise((resolve, reject) => {
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const userCoordinates = { latitude, longitude };
+      resolve(userCoordinates); // Resolve the Promise with coordinates
+    }
 
-    return userCoordinates;
-  }
+    function error() {
+      reject(coordinates); // Reject the Promise with default coordinates
+    }
 
-  function error() {
-    return coordinates;
-  }
-
-  if (!navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(error);
-  } else {
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
+    if (!navigator.geolocation) {
+      reject(coordinates); // Reject the Promise if geolocation is not supported
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  });
 };

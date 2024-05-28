@@ -15,8 +15,13 @@ export const getCurrentPosition = () => {
       resolve(userCoordinates); // Resolve the Promise with coordinates
     }
 
-    function error() {
-      reject(coordinates); // Reject the Promise with default coordinates
+    function error(err) {
+      // Check if the error is due to user denying location access
+      if (err.code === err.PERMISSION_DENIED) {
+        resolve(coordinates); // Use default coordinates
+      } else {
+        reject(coordinates); // Reject the Promise with default coordinates for other errors
+      }
     }
 
     if (!navigator.geolocation) {

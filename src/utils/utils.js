@@ -12,20 +12,19 @@ export const getCurrentPosition = () => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       const userCoordinates = { latitude, longitude };
-      resolve(userCoordinates); // Resolve the Promise with coordinates
+      resolve(userCoordinates);
     }
 
     function error(err) {
-      // Check if the error is due to user denying location access
       if (err.code === err.PERMISSION_DENIED) {
-        resolve(coordinates); // Use default coordinates
+        resolve(coordinates);
       } else {
-        reject(coordinates); // Reject the Promise with default coordinates for other errors
+        reject(coordinates);
       }
     }
 
     if (!navigator.geolocation) {
-      reject(coordinates); // Reject the Promise if geolocation is not supported
+      reject(coordinates);
     } else {
       navigator.geolocation.getCurrentPosition(success, error);
     }

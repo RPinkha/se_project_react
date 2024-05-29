@@ -50,9 +50,28 @@
   padding-bottom: 24px;
 }
 
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk";
+}
+
+.modal__label_type_error {
+  color: #ff4d00;
+}
+
 .modal__input {
   border-width: 0 0 1px;
   padding: 0 0 4px;
+}
+
+.modal__input_type_error {
+  border-color: #ff4d00;
+  color: #ff4d00;
 }
 
 .modal__input::placeholder {
@@ -76,16 +95,6 @@
 
 .modal__close:hover {
   cursor: pointer;
-}
-
-.modal__label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 700;
-  font-family: "Cabinet Grotesk";
 }
 
 .modal__fieldset {

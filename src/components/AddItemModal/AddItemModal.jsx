@@ -4,20 +4,35 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const [name, setName] = useState("");
-  const [nameError, setNameError] = useState("");
+  const [nameError, setNameError] = useState(false);
 
   const [imageUrl, setImageUrl] = useState("");
-  const [imageUrlError, setImageUrlError] = useState("");
+  const [imageUrlError, setImageUrlError] = useState(false);
 
   const [weatherType, setWeatherType] = useState("");
-  const [weatherTypeError, setWeatherTypeError] = useState("");
+
+  const validateName = () => {
+    const isValid = name.trim() !== "";
+    setNameError(isValid);
+  };
+
+  const validateImageUrl = () => {
+    const regex = /^(https?:\/\/.*\.(?:png|jpg|jpeg))/i;
+    const isValid = regex.test(imageUrl);
+    setImageUrlError(isValid);
+  };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+    validateName();
   };
 
   const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
+    const newValue = e.target.value;
+    setImageUrl(newValue);
+    const isValid = /^(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(newValue);
+    setImageUrlError(isValid);
+    console.log(imageUrlError);
   };
 
   const handleWeatherTypeChange = (e) => {

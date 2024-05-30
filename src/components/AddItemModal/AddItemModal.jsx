@@ -4,34 +4,38 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const [name, setName] = useState("");
-  const [nameError, setNameError] = useState(false);
+  const [nameError, setNameError] = useState(true);
 
   const [imageUrl, setImageUrl] = useState("");
-  const [imageUrlError, setImageUrlError] = useState(false);
+  const [imageUrlError, setImageUrlError] = useState(true);
 
   const [weatherType, setWeatherType] = useState("");
 
-  const validateName = () => {
-    const isValid = name.trim() !== "";
-    setNameError(isValid);
+  const validateName = (input) => {
+    return input.trim() !== "";
   };
 
-  const validateImageUrl = () => {
-    const regex = /^(https?:\/\/.*\.(?:png|jpg|jpeg))/i;
-    const isValid = regex.test(imageUrl);
-    setImageUrlError(isValid);
+  const validateImageUrl = (input) => {
+    const regex =
+      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
+    return regex.test(input);
   };
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
-    validateName();
+    const newValue = e.target.value;
+    setName(newValue);
+    const isValid = validateName(newValue);
+    setNameError(isValid);
+
+    console.log(nameError);
   };
 
   const handleImageUrlChange = (e) => {
     const newValue = e.target.value;
     setImageUrl(newValue);
-    const isValid = /^(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(newValue);
+    const isValid = validateImageUrl(newValue);
     setImageUrlError(isValid);
+
     console.log(imageUrlError);
   };
 
@@ -42,6 +46,14 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddSubmit({ name, weatherType, imageUrl });
+  };
+
+  const handleNameBlur = (e) => {
+    validateName(e.target.value);
+  };
+
+  const handleImageUrlBlur = (e) => {
+    validateImageUrl(e.target.value);
   };
 
   useEffect(() => {
@@ -60,27 +72,41 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="Name" className="modal__label">
+      <label
+        htmlFor="Name"
+        className={`modal__label${nameError ? "" : " modal__label_type_error"}`}
+      >
         Name
         <input
           type="text"
-          className="modal__input"
+          className={`modal__input${
+            nameError ? "" : " modal__input_type_error"
+          }`}
           id="Name"
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
+          onBlur={handleNameBlur}
           required
         />
       </label>
-      <label htmlFor="ImageURL" className="modal__label">
+      <label
+        htmlFor="ImageURL"
+        className={`modal__label${
+          imageUrlError ? "" : " modal__label_type_error"
+        }`}
+      >
         Image
         <input
           type="url"
-          className="modal__input"
+          className={`modal__input${
+            imageUrlError ? "" : " modal__input_type_error"
+          }`}
           id="ImageURL"
           placeholder="Image URL"
           value={imageUrl}
           onChange={handleImageUrlChange}
+          onBlur={handleImageUrlBlur}
           required
         />
       </label>

@@ -52,10 +52,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     validateName(e.target.value);
   };
 
-  const handleImageUrlBlur = (e) => {
-    validateImageUrl(e.target.value);
-  };
-
   useEffect(() => {
     if (isOpen) {
       setName("");
@@ -86,7 +82,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
-          onBlur={handleNameBlur}
           required
         />
       </label>
@@ -106,7 +101,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
           placeholder="Image URL"
           value={imageUrl}
           onChange={handleImageUrlChange}
-          onBlur={handleImageUrlBlur}
           required
         />
       </label>

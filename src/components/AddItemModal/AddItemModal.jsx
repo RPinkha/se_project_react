@@ -48,10 +48,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     onAddSubmit({ name, weatherType, imageUrl });
   };
 
-  const handleNameBlur = (e) => {
-    validateName(e.target.value);
-  };
-
   useEffect(() => {
     if (isOpen) {
       setName("");

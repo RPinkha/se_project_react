@@ -1,6 +1,6 @@
 export const apiKey = "db9e5115ea5873f9abc7ff2640e5cb07";
 
-export const coordinates = {
+export const defaultCoordinates = {
   latitude: "40.719517",
   longitude: "-73.852211",
 };

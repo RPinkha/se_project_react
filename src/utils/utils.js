@@ -1,4 +1,4 @@
-import { coordinates } from "./constants";
+import { defaultCoordinates } from "./constants";
 
 //-----------------FUNCTION TO CHECK RESPONSE FROM SERVER------------------>>
 export function checkResponse(res) {
@@ -17,14 +17,14 @@ export const getCurrentPosition = () => {
 
     function error(err) {
       if (err.code === err.PERMISSION_DENIED) {
-        resolve(coordinates);
+        resolve(defaultCoordinates);
       } else {
-        reject(coordinates);
+        reject(defaultCoordinates);
       }
     }
 
     if (!navigator.geolocation) {
-      reject(coordinates);
+      reject(defaultCoordinates);
     } else {
       navigator.geolocation.getCurrentPosition(success, error);
     }

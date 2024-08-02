@@ -20,6 +20,7 @@ import { apiKey } from "../../utils/constants";
 
 //contexts
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
+import { IsLoggedInContext } from "../../context/CurrentLogInContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -32,6 +33,9 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+
+  //authorization state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -126,58 +130,60 @@ function App() {
 
   return (
     <div className="page">
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <div className="page__content">
-          <Header
-            toggleMobileMenu={toggleMobileMenu}
-            isMobileMenuOpen={isMobileMenuOpen}
-            handleAddClick={handleAddClick}
-            weatherData={weatherData}
+      <IsLoggedInContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <div className="page__content">
+            <Header
+              toggleMobileMenu={toggleMobileMenu}
+              isMobileMenuOpen={isMobileMenuOpen}
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+            />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    weatherData={weatherData}
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                  />
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    handleAddClick={handleAddClick}
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                  />
+                }
+              />
+            </Routes>
+            <Footer />
+          </div>
+          <AddItemModal
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "add-garment"}
+            onAddSubmit={handleAddSubmit}
           />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  weatherData={weatherData}
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  handleAddClick={handleAddClick}
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-          </Routes>
-          <Footer />
-        </div>
-        <AddItemModal
-          handleCloseClick={closeActiveModal}
-          isOpen={activeModal === "add-garment"}
-          onAddSubmit={handleAddSubmit}
-        />
-        <ItemModal
-          card={selectedCard}
-          handleCloseClick={closeActiveModal}
-          isOpen={activeModal === "card-preview"}
-          onDeleteClick={handleCardDeleteClick}
-        />
-        <DeleteConfirmationModal
-          handleCloseClick={closeActiveModal}
-          isOpen={activeModal === "delete-confirmation"}
-          card={selectedCard}
-          handleCardDelete={handleCardDelete}
-        />
-      </CurrentTemperatureUnitContext.Provider>
+          <ItemModal
+            card={selectedCard}
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "card-preview"}
+            onDeleteClick={handleCardDeleteClick}
+          />
+          <DeleteConfirmationModal
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "delete-confirmation"}
+            card={selectedCard}
+            handleCardDelete={handleCardDelete}
+          />
+        </CurrentTemperatureUnitContext.Provider>
+      </IsLoggedInContext.Provider>
     </div>
   );
 }

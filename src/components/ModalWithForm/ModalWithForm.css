@@ -135,7 +135,7 @@
   background-color: #000;
   padding: 8px 16px 8px 16px;
   border-radius: 4px;
-  width: 124px;
+  width: fit-content;
   border: 0;
   margin-top: 8px;
 }
@@ -151,10 +151,10 @@
 }
 
 @media screen and (max-width: 700px) {
-  .modal_add-clothes {
+  .modal {
     align-items: flex-end;
   }
-  .modal__container_add-clothes {
+  .modal__container {
     width: 100vw;
     max-width: 100%;
     border-bottom-left-radius: 0;

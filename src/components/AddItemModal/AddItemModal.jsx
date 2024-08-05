@@ -26,8 +26,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     setName(newValue);
     const isValid = validateName(newValue);
     setNameError(isValid);
-
-    console.log(nameError);
   };
 
   const handleImageUrlChange = (e) => {
@@ -35,8 +33,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     setImageUrl(newValue);
     const isValid = validateImageUrl(newValue);
     setImageUrlError(isValid);
-
-    console.log(imageUrlError);
   };
 
   const handleWeatherTypeChange = (e) => {

@@ -3,48 +3,55 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(true);
+
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(true);
+
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(true);
 
-  const [imageUrl, setImageUrl] = useState("");
-  const [imageUrlError, setImageUrlError] = useState(true);
-
-  const [weatherType, setWeatherType] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [avatarError, setAvatarError] = useState(true);
 
   /* const validateName = (input) => {
     return input.trim() !== "";
-  };
-
-  const validateImageUrl = (input) => {
-    const regex =
-      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
-    return regex.test(input);
   }; */
 
   /* const handleEmailChange = (e) => {
     const newValue = e.target.value;
-    setName(newValue);
-    const isValid = validateName(newValue);
-    setNameError(isValid);
-  };
- */
-  const handleImageUrlChange = (e) => {
-    const newValue = e.target.value;
-    setImageUrl(newValue);
-    const isValid = validateImageUrl(newValue);
-    setImageUrlError(isValid);
-  };
+      setName(newValue);
+      const isValid = validateName(newValue);
+      setNameError(isValid);
+      };
+      */
 
   /*   const handleSubmit = (e) => {
     e.preventDefault();
     onAddSubmit({ name, weatherType, imageUrl });
+    };
+    */
+
+  const validateAvatar = (input) => {
+    const regex =
+      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
+    return regex.test(input);
   };
- */
+
+  const handleAvatarChange = (e) => {
+    const newValue = e.target.value;
+    setAvatar(newValue);
+    const isValid = validateAvatar(newValue);
+    setAvatarError(isValid);
+  };
+
   useEffect(() => {
     if (isOpen) {
+      setEmail("");
+      setPassword("");
       setName("");
-      setImageUrl("");
-      setWeatherType("");
+      setAvatar("");
     }
   }, [isOpen]);
 
@@ -89,24 +96,24 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
           }`}
           id="Password"
           placeholder="Password"
-          value={Password}
+          value={password}
           onChange={handlePasswordChange}
           required
         />
       </label>
       <label
         htmlFor="Name"
-        className={`modal__label${NameError ? "" : " modal__label_type_error"}`}
+        className={`modal__label${nameError ? "" : " modal__label_type_error"}`}
       >
         Name *
         <input
           type="url"
           className={`modal__input${
-            NameError ? "" : " modal__input_type_error"
+            nameError ? "" : " modal__input_type_error"
           }`}
           id="Name"
           placeholder="Name"
-          value={Name}
+          value={name}
           onChange={handleNameChange}
           required
         />
@@ -114,18 +121,18 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
       <label
         htmlFor="Avatar"
         className={`modal__label${
-          AvatarError ? "" : " modal__label_type_error"
+          avatarError ? "" : " modal__label_type_error"
         }`}
       >
         Avatar URL *
         <input
           type="url"
           className={`modal__input${
-            AvatarError ? "" : " modal__input_type_error"
+            avatarError ? "" : " modal__input_type_error"
           }`}
           id="Avatar"
           placeholder="Avatar URL"
-          value={imageUrl}
+          value={avatar}
           onChange={handleAvatarChange}
           required
         />

@@ -121,12 +121,12 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
         <input
           type="url"
           className={`modal__input${
-            imageUrlError ? "" : " modal__input_type_error"
+            AvatarError ? "" : " modal__input_type_error"
           }`}
           id="Avatar"
           placeholder="Avatar URL"
           value={imageUrl}
-          onChange={handleAvatrUrlChange}
+          onChange={handleAvatarChange}
           required
         />
       </label>

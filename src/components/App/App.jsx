@@ -20,7 +20,7 @@ import { apiKey } from "../../utils/constants";
 
 //contexts
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
-import { IsLoggedInContext } from "../../context/CurrentLogInContext";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -129,8 +129,8 @@ function App() {
   }, []);
 
   return (
-    <div className="page">
-      <IsLoggedInContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <CurrentUserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      <div className="page">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
@@ -183,8 +183,8 @@ function App() {
             handleCardDelete={handleCardDelete}
           />
         </CurrentTemperatureUnitContext.Provider>
-      </IsLoggedInContext.Provider>
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

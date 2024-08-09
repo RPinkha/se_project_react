@@ -3,7 +3,7 @@ import validator from "validator";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
+function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(true);
 
@@ -16,11 +16,10 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const [avatar, setAvatar] = useState("");
   const [avatarError, setAvatarError] = useState(true);
 
-  /*   const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onAddSubmit({ name, weatherType, imageUrl });
-    };
-    */
+    onRegisterSubmit({ email, password, name, avatar });
+  };
 
   const handleEmailChange = (e) => {
     const newValue = e.target.value;
@@ -72,7 +71,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
       formTitle="Sign Up"
       handleCloseClick={handleCloseClick}
       isOpen={isOpen}
-      //onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <label
         htmlFor="Email"

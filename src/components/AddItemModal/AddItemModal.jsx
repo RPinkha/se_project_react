@@ -54,7 +54,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
 
   return (
     <ModalWithForm
-      buttonText="Add garment"
       formTitle="New garment"
       handleCloseClick={handleCloseClick}
       isOpen={isOpen}
@@ -132,6 +131,9 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
           Cold
         </label>
       </fieldset>
+      <button type="submit" className="modal__submit">
+        Add garment
+      </button>
     </ModalWithForm>
   );
 }

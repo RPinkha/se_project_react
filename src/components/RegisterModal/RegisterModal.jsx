@@ -78,7 +78,6 @@ function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
 
   return (
     <ModalWithForm
-      buttonText="Sign Up"
       formTitle="Sign Up"
       handleCloseClick={handleCloseClick}
       isOpen={isOpen}
@@ -158,6 +157,9 @@ function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
           required
         />
       </label>
+      <button type="submit" className="modal__submit">
+        Sign Up
+      </button>
     </ModalWithForm>
   );
 }

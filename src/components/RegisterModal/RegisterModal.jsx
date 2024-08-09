@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import validator from "validator";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -15,28 +16,21 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
   const [avatar, setAvatar] = useState("");
   const [avatarError, setAvatarError] = useState(true);
 
-  /* const validateName = (input) => {
-    return input.trim() !== "";
-  }; */
-
-  /* const handleEmailChange = (e) => {
-    const newValue = e.target.value;
-      setName(newValue);
-      const isValid = validateName(newValue);
-      setNameError(isValid);
-      };
-      */
-
   /*   const handleSubmit = (e) => {
     e.preventDefault();
     onAddSubmit({ name, weatherType, imageUrl });
     };
     */
 
-  const validateAvatar = (input) => {
-    const regex =
-      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
-    return regex.test(input);
+  const handleEmailChange = (e) => {
+    const newValue = e.target.value;
+    setEmail(newValue);
+    const isValid = validateEmail(newValue);
+    setEmailError(isValid);
+  };
+
+  const validateEmail = (input) => {
+    return validator.isEmail(input);
   };
 
   const handleAvatarChange = (e) => {
@@ -44,6 +38,23 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     setAvatar(newValue);
     const isValid = validateAvatar(newValue);
     setAvatarError(isValid);
+  };
+
+  const validateAvatar = (input) => {
+    const regex =
+      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
+    return regex.test(input);
+  };
+
+  const validateName = (input) => {
+    return !validator.isEmpty(input, { ignore_whitespace: true });
+  };
+
+  const handleNameChange = (e) => {
+    const newValue = e.target.value;
+    setName(newValue);
+    const isValid = validateName(newValue);
+    setNameError(isValid);
   };
 
   useEffect(() => {

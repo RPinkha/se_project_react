@@ -32,6 +32,28 @@ function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
     return validator.isEmail(input);
   };
 
+  const handlePasswordChange = (e) => {
+    const newValue = e.target.value;
+    setPassword(newValue);
+    const isValid = validatePassword(newValue);
+    setPasswordError(isValid);
+  };
+
+  const validatePassword = (input) => {
+    return validator.isLength(input, { min: 6 });
+  };
+
+  const handleNameChange = (e) => {
+    const newValue = e.target.value;
+    setName(newValue);
+    const isValid = validateName(newValue);
+    setNameError(isValid);
+  };
+
+  const validateName = (input) => {
+    return !validator.isEmpty(input, { ignore_whitespace: true });
+  };
+
   const handleAvatarChange = (e) => {
     const newValue = e.target.value;
     setAvatar(newValue);
@@ -43,17 +65,6 @@ function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
     const regex =
       /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
     return regex.test(input);
-  };
-
-  const validateName = (input) => {
-    return !validator.isEmpty(input, { ignore_whitespace: true });
-  };
-
-  const handleNameChange = (e) => {
-    const newValue = e.target.value;
-    setName(newValue);
-    const isValid = validateName(newValue);
-    setNameError(isValid);
   };
 
   useEffect(() => {

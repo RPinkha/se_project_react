@@ -150,6 +150,24 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.modal__second-option {
+  border: none;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.5);
+  display: inline;
+  width: fit-content;
+  padding: 0 0 0 12px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk";
+}
+
+.modal__second-option:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 1);
+}
+
 @media screen and (max-width: 700px) {
   .modal {
     align-items: flex-end;

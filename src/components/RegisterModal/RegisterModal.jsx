@@ -157,9 +157,14 @@ function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
           required
         />
       </label>
-      <button type="submit" className="modal__submit">
-        Sign Up
-      </button>
+      <div className="modal__buttons">
+        <button type="submit" className="modal__submit">
+          Sign Up
+        </button>
+        <button type="button" className="modal__second-option">
+          or Log In
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

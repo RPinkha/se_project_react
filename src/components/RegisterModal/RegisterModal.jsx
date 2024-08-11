@@ -3,7 +3,7 @@ import validator from "validator";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
+function RegisterModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(true);
 
@@ -169,4 +169,4 @@ function AddItemModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
   );
 }
 
-export default AddItemModal;
+export default RegisterModal;

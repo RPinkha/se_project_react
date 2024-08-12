@@ -25,6 +25,7 @@ import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 //util
 import * as auth from "../../utils/auth";
+import { setToken, getToken } from "../../utils/token";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -106,8 +107,7 @@ function App() {
           setToken(data.jwt);
           //setUserData(data.user);
           setIsLoggedIn(true);
-          const redirectPath = location.state?.from?.pathname || "/";
-          navigate(redirectPath);
+          closeActiveModal();
         }
       })
       .catch(console.error);
@@ -118,7 +118,7 @@ function App() {
       .register(email, password, name, avatar)
       .then(() => {
         closeActiveModal();
-        handleLoginClick();
+        handleLogin(email, password);
       })
       .catch(console.error);
   };

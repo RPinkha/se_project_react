@@ -9,6 +9,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmationModal from "../ConfirmationModal/DeleteConfirmationModal";
 import Profile from "../Profile/Profile";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 //styles
 import "./App.css";
@@ -21,6 +22,9 @@ import { apiKey } from "../../utils/constants";
 //contexts
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
+
+//util
+import * as auth from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -54,6 +58,14 @@ function App() {
     setActiveModal("delete-confirmation");
   };
 
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+
+  const handleRegisterClick = () => {
+    setActiveModal("registration");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -79,6 +91,34 @@ function App() {
           currentItems.filter((item) => item._id !== card._id)
         );
         closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleLogin = (email, password) => {
+    if (!email || !password) {
+      return;
+    }
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.jwt) {
+          setToken(data.jwt);
+          //setUserData(data.user);
+          setIsLoggedIn(true);
+          const redirectPath = location.state?.from?.pathname || "/";
+          navigate(redirectPath);
+        }
+      })
+      .catch(console.error);
+  };
+
+  const handleRegistration = (email, password, name, avatar) => {
+    auth
+      .register(email, password, name, avatar)
+      .then(() => {
+        closeActiveModal();
+        handleLoginClick();
       })
       .catch(console.error);
   };
@@ -155,11 +195,13 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    handleAddClick={handleAddClick}
-                    onCardClick={handleCardClick}
-                    clothingItems={clothingItems}
-                  />
+                  <ProtectedRoute>
+                    <Profile
+                      handleAddClick={handleAddClick}
+                      onCardClick={handleCardClick}
+                      clothingItems={clothingItems}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>

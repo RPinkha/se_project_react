@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 import validator from "validator";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
@@ -9,6 +10,8 @@ function LoginModal({ handleCloseClick, isOpen, onEditProfileSubmit }) {
 
   const [avatar, setAvatar] = useState("");
   const [avatarError, setAvatarError] = useState(true);
+
+  const { userData } = useContext(CurrentUserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,8 +44,8 @@ function LoginModal({ handleCloseClick, isOpen, onEditProfileSubmit }) {
 
   useEffect(() => {
     if (isOpen) {
-      setName("");
-      setAvatar("");
+      setName(userData.name);
+      setAvatar(userData.avatar);
     }
   }, [isOpen]);
 

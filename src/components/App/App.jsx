@@ -99,7 +99,7 @@ function App() {
       .catch(console.error);
   };
 
-  const handleLogin = (email, password) => {
+  const handleLogin = ({ email, password }) => {
     if (!email || !password) {
       return;
     }
@@ -107,10 +107,12 @@ function App() {
       .authorize(email, password)
       .then((data) => {
         if (data.token) {
-          console.log(data);
-          setToken(data.token);
-          setUserData({ name: data.user.name, avatar: data.user.avatar });
-          console.log(userData);
+          const {
+            token,
+            user: { name, avatar },
+          } = data;
+          setToken(token);
+          setUserData({ name, avatar });
           setIsLoggedIn(true);
           closeActiveModal();
         }
@@ -123,7 +125,7 @@ function App() {
       .register(email, password, name, avatar)
       .then(() => {
         closeActiveModal();
-        handleLogin(email, password);
+        handleLogin({ email, password });
       })
       .catch(console.error);
   };

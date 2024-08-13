@@ -3,7 +3,12 @@ import validator from "validator";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
+function RegisterModal({
+  handleCloseClick,
+  isOpen,
+  onRegisterSubmit,
+  onLoginClick,
+}) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(true);
 
@@ -161,7 +166,11 @@ function RegisterModal({ handleCloseClick, isOpen, onRegisterSubmit }) {
         <button type="submit" className="modal__submit">
           Sign Up
         </button>
-        <button type="button" className="modal__second-option">
+        <button
+          type="button"
+          className="modal__second-option"
+          onClick={onLoginClick}
+        >
           or Log In
         </button>
       </div>

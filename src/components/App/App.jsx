@@ -30,6 +30,7 @@ import * as auth from "../../utils/auth";
 import { setToken, getToken } from "../../utils/token";
 
 function App() {
+  const [userData, setUserData] = useState({ name: "", avatar: "" });
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -107,7 +108,7 @@ function App() {
       .then((data) => {
         if (data.jwt) {
           setToken(data.jwt);
-          //setUserData(data.user);
+          setUserData(data.user);
           setIsLoggedIn(true);
           closeActiveModal();
         }
@@ -231,12 +232,14 @@ function App() {
           <LoginModal
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "login"}
-            onRegisterSubmit={handleLogin}
+            onLoginSubmit={handleLogin}
+            onSignupClick={handleRegisterClick}
           />
           <RegisterModal
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "registration"}
             onRegisterSubmit={handleRegistration}
+            onLoginClick={handleLoginClick}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

@@ -97,6 +97,20 @@
   border-radius: 50%;
 }
 
+.header__avatar-default {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 40px;
+  color: #fff;
+}
+
 .header__user-menu-toggle {
   display: none;
   background-color: #ffffff;

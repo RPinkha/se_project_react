@@ -84,11 +84,17 @@ function Header({
           >
             <div className="header__user-container">
               <p className="header__username">{userData.name}</p>
-              <img
-                src={userData.avatar}
-                alt="User Avatar"
-                className="header__avatar"
-              />
+              {userData.avatar ? (
+                <img
+                  src={userData.avatar}
+                  alt="User Avatar"
+                  className="header__avatar"
+                />
+              ) : (
+                <div className="header__avatar-default">
+                  {userData.name.slice(0, 1)}
+                </div>
+              )}
             </div>
           </Link>
         )}

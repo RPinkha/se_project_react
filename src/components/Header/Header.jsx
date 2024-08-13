@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../assets/Logo.svg";
 import avatar from "../../assets/Avatar.png";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function Header({
   handleAddClick,
+  handleLoginClick,
+  handleRegisterClick,
   weatherData,
   toggleMobileMenu,
   isMobileMenuOpen,
@@ -15,6 +19,8 @@ function Header({
     month: "long",
     day: "numeric",
   });
+
+  const { isLoggedIn } = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -37,22 +43,48 @@ function Header({
         />
         <div className="header__user-menu-buttons">
           <ToggleSwitch />
-          <button
-            className="header__add-clothes-button"
-            onClick={() => {
-              handleAddClick();
-              toggleMobileMenu();
-            }}
-          >
-            + Add clothes
-          </button>
+          {isLoggedIn && (
+            <button
+              className="header__button header__button_add-clothes"
+              onClick={() => {
+                handleAddClick();
+                toggleMobileMenu();
+              }}
+            >
+              + Add clothes
+            </button>
+          )}
+          {!isLoggedIn && (
+            <button
+              className={"header__button header__button_sign-up"}
+              onClick={() => {
+                handleRegisterClick();
+                toggleMobileMenu();
+              }}
+            >
+              Sign Up
+            </button>
+          )}
+          {!isLoggedIn && (
+            <button
+              className="header__button header__button_log-in"
+              onClick={() => {
+                handleLoginClick();
+                toggleMobileMenu();
+              }}
+            >
+              Log In
+            </button>
+          )}
         </div>
-        <Link to="/profile" className="header__link">
-          <div className="header__user-container">
-            <p className="header__username">Ruven Pinkhasov</p>
-            <img src={avatar} alt="User Avatar" className="header__avatar" />
-          </div>
-        </Link>
+        {isLoggedIn && (
+          <Link to="/profile" className="header__link">
+            <div className="header__user-container">
+              <p className="header__username">Ruven Pinkhasov</p>
+              <img src={avatar} alt="User Avatar" className="header__avatar" />
+            </div>
+          </Link>
+        )}
       </div>
       <button className="header__user-menu-toggle" onClick={toggleMobileMenu} />
       <div

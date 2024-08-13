@@ -10,6 +10,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmationModal from "../ConfirmationModal/DeleteConfirmationModal";
 import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 //styles
 import "./App.css";
@@ -179,6 +181,8 @@ function App() {
               toggleMobileMenu={toggleMobileMenu}
               isMobileMenuOpen={isMobileMenuOpen}
               handleAddClick={handleAddClick}
+              handleLoginClick={handleLoginClick}
+              handleRegisterClick={handleRegisterClick}
               weatherData={weatherData}
             />
             <Routes>
@@ -223,6 +227,16 @@ function App() {
             isOpen={activeModal === "delete-confirmation"}
             card={selectedCard}
             handleCardDelete={handleCardDelete}
+          />
+          <LoginModal
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "login"}
+            onRegisterSubmit={handleLogin}
+          />
+          <RegisterModal
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "registration"}
+            onRegisterSubmit={handleRegistration}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

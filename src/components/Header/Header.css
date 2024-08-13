@@ -55,7 +55,7 @@
   cursor: pointer;
 }
 
-.header__add-clothes-button {
+.header__button {
   padding: 0;
   border: 0;
   font-family: "Cabinet Grotesk";
@@ -65,7 +65,14 @@
   background-color: #f3f3f3;
 }
 
-.header__add-clothes-button:hover {
+.header__button_hidden {
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+  pointer-events: none;
+}
+
+.header__button:hover {
   cursor: pointer;
 }
 
@@ -186,7 +193,7 @@
     display: block;
   }
 
-  .header__add-clothes-button {
+  .header__button {
     background-color: #ffffff;
     align-self: auto;
   }

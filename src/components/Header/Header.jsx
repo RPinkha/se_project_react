@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -18,6 +18,20 @@ function Header({
     month: "long",
     day: "numeric",
   });
+
+  const Image = ({ src, alt, className, fallback }) => {
+    const [error, setError] = useState(false);
+
+    const onError = () => {
+      setError(true);
+    };
+
+    return error ? (
+      fallback
+    ) : (
+      <img src={src} alt={alt} className={className} onError={onError} />
+    );
+  };
 
   const { userData, isLoggedIn } = useContext(CurrentUserContext);
 
@@ -84,17 +98,16 @@ function Header({
           >
             <div className="header__user-container">
               <p className="header__username">{userData.name}</p>
-              {userData.avatar ? (
-                <img
-                  src={userData.avatar}
-                  alt="User Avatar"
-                  className="header__avatar"
-                />
-              ) : (
-                <div className="header__avatar header__avatar_default">
-                  {userData.name.slice(0, 1)}
-                </div>
-              )}
+              <Image
+                src={userData.avatar}
+                alt="User Avatar"
+                className="header__avatar"
+                fallback={
+                  <div className="header__avatar header__avatar_default">
+                    {userData.name.slice(0, 1)}
+                  </div>
+                }
+              />
             </div>
           </Link>
         )}

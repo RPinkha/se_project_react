@@ -29,12 +29,10 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidebar__avatar-default {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.2);
   text-align: center;
   vertical-align: middle;

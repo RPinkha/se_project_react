@@ -91,7 +91,7 @@ function Header({
                   className="header__avatar"
                 />
               ) : (
-                <div className="header__avatar-default">
+                <div className="header__avatar header__avatar_default">
                   {userData.name.slice(0, 1)}
                 </div>
               )}

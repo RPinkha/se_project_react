@@ -25,7 +25,7 @@ function SideBar({ handleEditProfileClick }) {
             className="sidebar__avatar"
           />
         ) : (
-          <div className="sidebar__avatar-default">
+          <div className="sidebar__avatar sidebar__avatar_default">
             {userData.name.slice(0, 1)}
           </div>
         )}

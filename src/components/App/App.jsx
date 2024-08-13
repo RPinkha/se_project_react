@@ -140,7 +140,7 @@ function App() {
       .modify(name, avatar, token)
       .then((data) => {
         closeActiveModal();
-        setUserData({ name: data.name, avatar: data.avatar });
+        setUserData({ name: data.name, avatar: data.avatar, _id: data._id });
       })
       .catch(console.error);
   };

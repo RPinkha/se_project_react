@@ -106,10 +106,11 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log("Login successful", data);
         if (data.token) {
+          console.log(data);
           setToken(data.token);
-          setUserData(data.user);
+          setUserData({ name: data.user.name, avatar: data.user.avatar });
+          console.log(userData);
           setIsLoggedIn(true);
           closeActiveModal();
         }

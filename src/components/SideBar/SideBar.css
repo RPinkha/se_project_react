@@ -1,7 +1,15 @@
 .sidebar {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
   padding-top: 15px;
+  align-items: flex-start;
+}
+
+.sidebar__user {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
 }
 
 .sidebar__username {
@@ -14,9 +22,24 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  align-self: center;
 }
 
 .sidebar__avatar {
   width: 40px;
   height: 40px;
+}
+
+.sidebar__button {
+  padding: 0;
+  border: 0;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: #f3f3f3;
+}
+
+.sidebar__button:hover {
+  cursor: pointer;
 }

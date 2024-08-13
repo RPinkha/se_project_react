@@ -65,13 +65,6 @@
   background-color: #f3f3f3;
 }
 
-.header__button_hidden {
-  visibility: hidden;
-  opacity: 0;
-  display: none;
-  pointer-events: none;
-}
-
 .header__button:hover {
   cursor: pointer;
 }

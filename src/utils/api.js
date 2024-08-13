@@ -16,10 +16,13 @@ function getItems() {
   return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
-function addItem(name, weather, imageUrl) {
+function addItem(name, weather, imageUrl, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({
       name: name,
       weather: weather,
@@ -28,9 +31,12 @@ function addItem(name, weather, imageUrl) {
   }).then(checkResponse);
 }
 
-function deleteItem(id) {
+function deleteItem(id, token) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   }).then(checkResponse);
 }
 

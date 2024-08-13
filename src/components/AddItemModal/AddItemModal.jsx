@@ -17,7 +17,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
 
   const validateImageUrl = (input) => {
     const regex =
-      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
+      /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp)(?:\?.*)?)$/i;
     return regex.test(input);
   };
 

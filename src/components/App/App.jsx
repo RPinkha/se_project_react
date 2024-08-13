@@ -31,7 +31,7 @@ import * as auth from "../../utils/auth";
 import { setToken, getToken } from "../../utils/token";
 
 function App() {
-  const [userData, setUserData] = useState({ name: "", avatar: "" });
+  const [userData, setUserData] = useState({ name: "", avatar: "", _id: "" });
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -82,7 +82,8 @@ function App() {
   };
 
   const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
-    addItem(name, weatherType, imageUrl)
+    const token = getToken();
+    addItem(name, weatherType, imageUrl, token)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
@@ -91,8 +92,8 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
-    console.log(card);
-    deleteItem(card._id)
+    const token = getToken();
+    deleteItem(card._id, token)
       .then(() => {
         setClothingItems((currentItems) =>
           currentItems.filter((item) => item._id !== card._id)
@@ -112,10 +113,10 @@ function App() {
         if (data.token) {
           const {
             token,
-            user: { name, avatar },
+            user: { name, avatar, _id },
           } = data;
           setToken(token);
-          setUserData({ name, avatar });
+          setUserData({ name, avatar, _id });
           setIsLoggedIn(true);
           closeActiveModal();
         }
@@ -152,9 +153,9 @@ function App() {
     }
 
     getUserInfo(token)
-      .then(({ name, avatar }) => {
+      .then(({ name, avatar, _id }) => {
         setIsLoggedIn(true);
-        setUserData({ name, avatar });
+        setUserData({ name, avatar, _id });
       })
       .catch(console.error);
   }, []);

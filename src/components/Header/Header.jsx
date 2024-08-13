@@ -4,7 +4,6 @@ import { useContext } from "react";
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../assets/Logo.svg";
-import avatar from "../../assets/Avatar.png";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function Header({
@@ -20,7 +19,7 @@ function Header({
     day: "numeric",
   });
 
-  const { isLoggedIn } = useContext(CurrentUserContext);
+  const { userData, isLoggedIn } = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -78,10 +77,18 @@ function Header({
           )}
         </div>
         {isLoggedIn && (
-          <Link to="/profile" className="header__link">
+          <Link
+            to="/profile"
+            className="header__link"
+            onClick={toggleMobileMenu}
+          >
             <div className="header__user-container">
-              <p className="header__username">Ruven Pinkhasov</p>
-              <img src={avatar} alt="User Avatar" className="header__avatar" />
+              <p className="header__username">{userData.name}</p>
+              <img
+                src={userData.avatar}
+                alt="User Avatar"
+                className="header__avatar"
+              />
             </div>
           </Link>
         )}

@@ -191,7 +191,9 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <CurrentUserContext.Provider
+      value={{ userData, isLoggedIn, setIsLoggedIn }}
+    >
       <div className="page">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}

@@ -18,7 +18,7 @@ import "./App.css";
 
 //constants
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems, addItem, deleteItem } from "../../utils/api";
+import { getItems, addItem, deleteItem, getUserInfo } from "../../utils/api";
 import { apiKey } from "../../utils/constants";
 
 //contexts
@@ -106,8 +106,9 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        if (data.jwt) {
-          setToken(data.jwt);
+        console.log("Login successful", data);
+        if (data.token) {
+          setToken(data.token);
           setUserData(data.user);
           setIsLoggedIn(true);
           closeActiveModal();
@@ -116,7 +117,7 @@ function App() {
       .catch(console.error);
   };
 
-  const handleRegistration = (email, password, name, avatar) => {
+  const handleRegistration = ({ email, password, name, avatar }) => {
     auth
       .register(email, password, name, avatar)
       .then(() => {
@@ -125,6 +126,21 @@ function App() {
       })
       .catch(console.error);
   };
+
+  useEffect(() => {
+    const token = getToken();
+
+    if (!token) {
+      return;
+    }
+
+    getUserInfo(token)
+      .then(({ name, avatar }) => {
+        setIsLoggedIn(true);
+        setUserData({ name, avatar });
+      })
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     getWeather(apiKey)

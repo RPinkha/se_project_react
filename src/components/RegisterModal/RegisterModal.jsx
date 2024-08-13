@@ -68,7 +68,7 @@ function RegisterModal({
 
   const validateAvatar = (input) => {
     const regex =
-      /^(https?:\/\/[^\/]+\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp))$/i;
+      /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|apng|avif|svg|webp)(?:\?.*)?)$/i;
     return regex.test(input);
   };
 
@@ -100,7 +100,7 @@ function RegisterModal({
           className={`modal__input${
             emailError ? "" : " modal__input_type_error"
           }`}
-          id="Email"
+          id="Signup-Email"
           placeholder="Email"
           value={email}
           onChange={handleEmailChange}
@@ -115,11 +115,11 @@ function RegisterModal({
       >
         Password *
         <input
-          type="url"
+          type="password"
           className={`modal__input${
             passwordError ? "" : " modal__input_type_error"
           }`}
-          id="Password"
+          id="Signup-Password"
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
@@ -132,11 +132,11 @@ function RegisterModal({
       >
         Name *
         <input
-          type="url"
+          type="text"
           className={`modal__input${
             nameError ? "" : " modal__input_type_error"
           }`}
-          id="Name"
+          id="Signup-Name"
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
@@ -155,7 +155,7 @@ function RegisterModal({
           className={`modal__input${
             avatarError ? "" : " modal__input_type_error"
           }`}
-          id="Avatar"
+          id="Signup-Avatar"
           placeholder="Avatar URL"
           value={avatar}
           onChange={handleAvatarChange}

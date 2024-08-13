@@ -1,6 +1,19 @@
 import { baseUrl } from "./constants";
 import { checkResponse } from "./utils";
 
+const getUserInfo = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+};
+
 function getItems() {
   return fetch(`${baseUrl}/items`).then(checkResponse);
 }
@@ -23,4 +36,4 @@ function deleteItem(id) {
   }).then(checkResponse);
 }
 
-export { getItems, addItem, deleteItem };
+export { getItems, addItem, deleteItem, getUserInfo };

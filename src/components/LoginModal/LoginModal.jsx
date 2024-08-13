@@ -68,7 +68,7 @@ function LoginModal({
           className={`modal__input${
             emailError ? "" : " modal__input_type_error"
           }`}
-          id="Email"
+          id="Signip-Email"
           placeholder="Email"
           value={email}
           onChange={handleEmailChange}
@@ -83,11 +83,11 @@ function LoginModal({
       >
         Password
         <input
-          type="url"
+          type="password"
           className={`modal__input${
             passwordError ? "" : " modal__input_type_error"
           }`}
-          id="Password"
+          id="Signin-Password"
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}

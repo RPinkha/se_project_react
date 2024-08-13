@@ -134,8 +134,9 @@ function App() {
   };
 
   const handleEditProfile = ({ name, avatar }) => {
+    const token = getToken();
     auth
-      .modify(name, avatar)
+      .modify(name, avatar, token)
       .then((data) => {
         closeActiveModal();
         setUserData({ name: data.name, avatar: data.avatar });

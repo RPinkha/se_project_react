@@ -48,7 +48,6 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
     if (isOpen) {
       setName("");
       setImageUrl("");
-      setWeatherType("");
     }
   }, [isOpen]);
 

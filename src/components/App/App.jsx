@@ -130,6 +130,15 @@ function App() {
       .catch(console.error);
   };
 
+  const handleEditProfile = ({ name, avatar }) => {
+    auth
+      .modify(name, avatar)
+      .then(() => {
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
   useEffect(() => {
     const token = getToken();
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import validator from "validator";
 
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../../ModalWithForm/ModalWithForm";
 
 function LoginModal({ handleCloseClick, isOpen, onEditProfileSubmit }) {
   const [name, setName] = useState("");

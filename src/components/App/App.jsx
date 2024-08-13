@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 //styles
 import "./App.css";
@@ -41,8 +42,6 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-
-  //authorization state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -68,6 +67,10 @@ function App() {
 
   const handleRegisterClick = () => {
     setActiveModal("registration");
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
   };
 
   const closeActiveModal = () => {
@@ -133,8 +136,9 @@ function App() {
   const handleEditProfile = ({ name, avatar }) => {
     auth
       .modify(name, avatar)
-      .then(() => {
+      .then((data) => {
         closeActiveModal();
+        setUserData({ name: data.name, avatar: data.avatar });
       })
       .catch(console.error);
   };
@@ -233,6 +237,7 @@ function App() {
                   <ProtectedRoute>
                     <Profile
                       handleAddClick={handleAddClick}
+                      handleEditProfileClick={handleEditProfileClick}
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
                     />
@@ -270,6 +275,11 @@ function App() {
             isOpen={activeModal === "registration"}
             onRegisterSubmit={handleRegistration}
             onLoginClick={handleLoginClick}
+          />
+          <EditProfileModal
+            handleCloseClick={closeActiveModal}
+            isOpen={activeModal === "edit-profile"}
+            onEditProfileSubmit={handleEditProfile}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

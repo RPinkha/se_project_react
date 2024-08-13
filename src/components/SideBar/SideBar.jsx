@@ -4,7 +4,7 @@ import "./SideBar.css";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { removeToken } from "../../utils/token";
 
-function SideBar() {
+function SideBar({ handleEditProfileClick }) {
   const navigate = useNavigate();
 
   const { userData, setIsLoggedIn } = useContext(CurrentUserContext);
@@ -31,7 +31,11 @@ function SideBar() {
         )}
         <p className="sidebar__username">{userData.name}</p>
       </div>
-      <button type="button" className="sidebar__button">
+      <button
+        type="button"
+        className="sidebar__button"
+        onClick={handleEditProfileClick}
+      >
         Change profile data
       </button>
       <button type="button" className="sidebar__button" onClick={signOut}>

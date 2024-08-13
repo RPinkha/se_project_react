@@ -22,3 +22,14 @@ export const authorize = (email, password) => {
     body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 };
+
+export const modify = (name, avatar) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+};

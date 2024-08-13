@@ -19,7 +19,6 @@ import "./App.css";
 
 //constants
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems, addItem, deleteItem, getUserInfo } from "../../utils/api";
 import { apiKey } from "../../utils/constants";
 
 //contexts
@@ -27,6 +26,7 @@ import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureU
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 //util
+import * as api from "../../utils/api";
 import * as auth from "../../utils/auth";
 import { setToken, getToken } from "../../utils/token";
 
@@ -83,7 +83,8 @@ function App() {
 
   const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
     const token = getToken();
-    addItem(name, weatherType, imageUrl, token)
+    api
+      .addItem(name, weatherType, imageUrl, token)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
@@ -93,7 +94,8 @@ function App() {
 
   const handleCardDelete = (card) => {
     const token = getToken();
-    deleteItem(card._id, token)
+    api
+      .deleteItem(card._id, token)
       .then(() => {
         setClothingItems((currentItems) =>
           currentItems.filter((item) => item._id !== card._id)
@@ -101,6 +103,27 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = getToken();
+    !isLiked
+      ? api
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
   };
 
   const handleLogin = ({ email, password }) => {
@@ -152,7 +175,8 @@ function App() {
       return;
     }
 
-    getUserInfo(token)
+    api
+      .getUserInfo(token)
       .then(({ name, avatar, _id }) => {
         setIsLoggedIn(true);
         setUserData({ name, avatar, _id });
@@ -170,7 +194,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getItems()
+    api
+      .getItems()
       .then((data) => {
         setClothingItems(data.reverse());
       })

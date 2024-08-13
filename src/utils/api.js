@@ -1,7 +1,7 @@
 import { baseUrl } from "./constants";
 import { checkResponse } from "./utils";
 
-const getUserInfo = (token) => {
+export const getUserInfo = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
@@ -12,11 +12,11 @@ const getUserInfo = (token) => {
   }).then(checkResponse);
 };
 
-function getItems() {
+export function getItems() {
   return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
-function addItem(name, weather, imageUrl, token) {
+export function addItem(name, weather, imageUrl, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -31,7 +31,7 @@ function addItem(name, weather, imageUrl, token) {
   }).then(checkResponse);
 }
 
-function deleteItem(id, token) {
+export function deleteItem(id, token) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -40,4 +40,20 @@ function deleteItem(id, token) {
   }).then(checkResponse);
 }
 
-export { getItems, addItem, deleteItem, getUserInfo };
+export function addCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+export function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}

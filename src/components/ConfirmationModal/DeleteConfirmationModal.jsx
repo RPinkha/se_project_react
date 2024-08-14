@@ -5,6 +5,7 @@ function DeleteConfirmationModal({
   isOpen,
   handleCardDelete,
   card,
+  isLoading,
 }) {
   return (
     <div
@@ -27,15 +28,17 @@ function DeleteConfirmationModal({
           className="modal-confirmation__delete"
           onClick={() => handleCardDelete(card)}
         >
-          Yes, delete item
+          {isLoading ? "Deleting Item..." : "Delete Item"}
         </button>
-        <button
-          type="button"
-          className="modal-confirmation__cancel"
-          onClick={handleCloseClick}
-        >
-          Cancel
-        </button>
+        {!isLoading && (
+          <button
+            type="button"
+            className="modal-confirmation__cancel"
+            onClick={handleCloseClick}
+          >
+            Cancel
+          </button>
+        )}
       </div>
     </div>
   );

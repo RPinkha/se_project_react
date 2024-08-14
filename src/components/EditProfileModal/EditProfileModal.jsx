@@ -4,7 +4,12 @@ import validator from "validator";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ handleCloseClick, isOpen, onEditProfileSubmit }) {
+function LoginModal({
+  handleCloseClick,
+  isOpen,
+  onEditProfileSubmit,
+  isLoading,
+}) {
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(true);
 
@@ -93,7 +98,7 @@ function LoginModal({ handleCloseClick, isOpen, onEditProfileSubmit }) {
         />
       </label>
       <button type="submit" className="modal__submit">
-        Save Changes
+        {isLoading ? "Saving Changes..." : "Save Changes"}
       </button>
     </ModalWithForm>
   );

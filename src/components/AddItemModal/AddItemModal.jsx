@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
+function AddItemModal({ handleCloseClick, isOpen, onAddSubmit, isLoading }) {
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(true);
 
@@ -131,7 +131,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit }) {
         </label>
       </fieldset>
       <button type="submit" className="modal__submit">
-        Add garment
+        {isLoading ? "Adding garment..." : "Add garment"}
       </button>
     </ModalWithForm>
   );

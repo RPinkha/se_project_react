@@ -8,6 +8,7 @@ function RegisterModal({
   isOpen,
   onRegisterSubmit,
   onLoginClick,
+  isLoading,
 }) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(true);
@@ -164,15 +165,17 @@ function RegisterModal({
       </label>
       <div className="modal__buttons">
         <button type="submit" className="modal__submit">
-          Sign Up
+          {isLoading ? "Signing up..." : "Sign Up"}
         </button>
-        <button
-          type="button"
-          className="modal__second-option"
-          onClick={onLoginClick}
-        >
-          or Log In
-        </button>
+        {!isLoading && (
+          <button
+            type="button"
+            className="modal__second-option"
+            onClick={onLoginClick}
+          >
+            or Log In
+          </button>
+        )}
       </div>
     </ModalWithForm>
   );

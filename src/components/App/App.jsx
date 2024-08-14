@@ -43,6 +43,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -82,6 +83,7 @@ function App() {
   };
 
   const handleAddSubmit = ({ name, weatherType, imageUrl }) => {
+    setIsLoading(true);
     const token = getToken();
     api
       .addItem(name, weatherType, imageUrl, token)
@@ -89,10 +91,12 @@ function App() {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const handleCardDelete = (card) => {
+    setIsLoading(true);
     const token = getToken();
     api
       .deleteItem(card._id, token)
@@ -102,7 +106,8 @@ function App() {
         );
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const handleCardLike = ({ id, isLiked }) => {
@@ -115,7 +120,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
-          .catch((err) => console.log(err))
+          .catch(console.error)
       : api
           .removeCardLike(id, token)
           .then((updatedCard) => {
@@ -123,13 +128,14 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
-          .catch((err) => console.log(err));
+          .catch(console.error);
   };
 
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
       return;
     }
+    setIsLoading(true);
     auth
       .authorize(email, password)
       .then((data) => {
@@ -144,20 +150,24 @@ function App() {
           closeActiveModal();
         }
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const handleRegistration = ({ email, password, name, avatar }) => {
+    setIsLoading(true);
     auth
       .register(email, password, name, avatar)
       .then(() => {
         closeActiveModal();
         handleLogin({ email, password });
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const handleEditProfile = ({ name, avatar }) => {
+    setIsLoading(true);
     const token = getToken();
     auth
       .modify(name, avatar, token)
@@ -165,7 +175,8 @@ function App() {
         closeActiveModal();
         setUserData({ name: data.name, avatar: data.avatar, _id: data._id });
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
@@ -280,6 +291,7 @@ function App() {
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "add-garment"}
             onAddSubmit={handleAddSubmit}
+            isLoading={isLoading}
           />
           <ItemModal
             card={selectedCard}
@@ -292,23 +304,27 @@ function App() {
             isOpen={activeModal === "delete-confirmation"}
             card={selectedCard}
             handleCardDelete={handleCardDelete}
+            isLoading={isLoading}
           />
           <LoginModal
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "login"}
             onLoginSubmit={handleLogin}
             onSignupClick={handleRegisterClick}
+            isLoading={isLoading}
           />
           <RegisterModal
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "registration"}
             onRegisterSubmit={handleRegistration}
             onLoginClick={handleLoginClick}
+            isLoading={isLoading}
           />
           <EditProfileModal
             handleCloseClick={closeActiveModal}
             isOpen={activeModal === "edit-profile"}
             onEditProfileSubmit={handleEditProfile}
+            isLoading={isLoading}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

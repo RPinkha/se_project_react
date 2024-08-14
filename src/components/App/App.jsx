@@ -214,6 +214,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!activeModal) return;
     const handleKeyDown = (evt) => {
       if (evt.key === "Escape") {
         closeActiveModal();
@@ -225,9 +226,10 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [activeModal]);
 
   useEffect(() => {
+    if (!activeModal) return;
     const handleClickOutside = (e) => {
       if (e.target.classList.contains("modal")) {
         closeActiveModal();
@@ -239,7 +241,7 @@ function App() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [activeModal]);
 
   return (
     <CurrentUserContext.Provider

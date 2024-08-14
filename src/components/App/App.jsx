@@ -255,6 +255,7 @@ function App() {
                     weatherData={weatherData}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onLikeClick={handleCardLike}
                   />
                 }
               />
@@ -267,6 +268,7 @@ function App() {
                       handleEditProfileClick={handleEditProfileClick}
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
+                      onLikeClick={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

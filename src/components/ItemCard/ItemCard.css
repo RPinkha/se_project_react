@@ -41,6 +41,7 @@
   width: 21px;
   height: 18px;
   align-self: center;
+  cursor: pointer;
 }
 
 .card__like-button_active {

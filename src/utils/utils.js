@@ -1,8 +1,13 @@
 import { defaultCoordinates } from "./constants";
 
 //-----------------FUNCTION TO CHECK RESPONSE FROM SERVER------------------>>
-export function checkResponse(res) {
+function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
+//-----------------FUNCTION FERCH A REQUEST TO THE SERVER------------------>>
+export function request(url, options) {
+  return fetch(url, options).then(checkResponse);
 }
 
 //-----------------FUNCTION TO GET USER LOCATION------------------>>

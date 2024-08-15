@@ -59,7 +59,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit, isLoading }) {
       onSubmit={handleSubmit}
     >
       <label
-        htmlFor="Name"
+        htmlFor="AddItem-Name"
         className={`modal__label${nameError ? "" : " modal__label_type_error"}`}
       >
         Name
@@ -68,7 +68,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit, isLoading }) {
           className={`modal__input${
             nameError ? "" : " modal__input_type_error"
           }`}
-          id="Name"
+          id="AddItem-Name"
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
@@ -76,7 +76,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit, isLoading }) {
         />
       </label>
       <label
-        htmlFor="ImageURL"
+        htmlFor="AddItem-ImageURL"
         className={`modal__label${
           imageUrlError ? "" : " modal__label_type_error"
         }`}
@@ -87,7 +87,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit, isLoading }) {
           className={`modal__input${
             imageUrlError ? "" : " modal__input_type_error"
           }`}
-          id="ImageURL"
+          id="AddItem-ImageURL"
           placeholder="Image URL"
           value={imageUrl}
           onChange={handleImageUrlChange}
@@ -96,33 +96,42 @@ function AddItemModal({ handleCloseClick, isOpen, onAddSubmit, isLoading }) {
       </label>
       <fieldset className="modal__fieldset" required>
         <legend className="modal__legend">Select weather type:</legend>
-        <label htmlFor="Hot" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="AddItem-Hot"
+          className="modal__label modal__label_type_radio"
+        >
           <input
             className="modal__radio-input"
             type="radio"
-            id="Hot"
+            id="AddItem-Hot"
             name="weather type"
             value="hot"
             onChange={handleWeatherTypeChange}
           />
           Hot
         </label>
-        <label htmlFor="Warm" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="AddItem-Warm"
+          className="modal__label modal__label_type_radio"
+        >
           <input
             className="modal__radio-input"
             type="radio"
-            id="Warm"
+            id="AddItem-Warm"
             name="weather type"
             value="warm"
             onChange={handleWeatherTypeChange}
           />
           Warm
         </label>
-        <label htmlFor="Cold" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="AddItem-Cold"
+          className="modal__label modal__label_type_radio"
+        >
           <input
             className="modal__radio-input"
             type="radio"
-            id="Cold"
+            id="AddItem-Cold"
             name="weather type"
             value="cold"
             onChange={handleWeatherTypeChange}

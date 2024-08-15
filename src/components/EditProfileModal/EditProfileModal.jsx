@@ -62,7 +62,7 @@ function LoginModal({
       onSubmit={handleSubmit}
     >
       <label
-        htmlFor="Name"
+        htmlFor="EditProfile-Name"
         className={`modal__label${nameError ? "" : " modal__label_type_error"}`}
       >
         Name *
@@ -71,7 +71,7 @@ function LoginModal({
           className={`modal__input${
             nameError ? "" : " modal__input_type_error"
           }`}
-          id="Edit=Profile-Name"
+          id="EditProfile-Name"
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
@@ -79,7 +79,7 @@ function LoginModal({
         />
       </label>
       <label
-        htmlFor="Avatar"
+        htmlFor="EditProfile-Avatar"
         className={`modal__label${
           avatarError ? "" : " modal__label_type_error"
         }`}
@@ -90,7 +90,7 @@ function LoginModal({
           className={`modal__input${
             avatarError ? "" : " modal__input_type_error"
           }`}
-          id="Edit=Profile-Avatar"
+          id="EditProfile-Avatar"
           placeholder="Avatar URL"
           value={avatar}
           onChange={handleAvatarChange}

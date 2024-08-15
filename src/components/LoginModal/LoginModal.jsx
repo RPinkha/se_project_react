@@ -58,7 +58,7 @@ function LoginModal({
       onSubmit={handleSubmit}
     >
       <label
-        htmlFor="Email"
+        htmlFor="Signin-Email"
         className={`modal__label${
           emailError ? "" : " modal__label_type_error"
         }`}
@@ -69,7 +69,7 @@ function LoginModal({
           className={`modal__input${
             emailError ? "" : " modal__input_type_error"
           }`}
-          id="Signip-Email"
+          id="Signin-Email"
           placeholder="Email"
           value={email}
           onChange={handleEmailChange}
@@ -77,7 +77,7 @@ function LoginModal({
         />
       </label>
       <label
-        htmlFor="Password"
+        htmlFor="Signin-Password"
         className={`modal__label${
           passwordError ? "" : " modal__label_type_error"
         }`}

@@ -90,7 +90,7 @@ function RegisterModal({
       onSubmit={handleSubmit}
     >
       <label
-        htmlFor="Email"
+        htmlFor="Signup-Email"
         className={`modal__label${
           emailError ? "" : " modal__label_type_error"
         }`}
@@ -109,7 +109,7 @@ function RegisterModal({
         />
       </label>
       <label
-        htmlFor="Password"
+        htmlFor="Signup-Password"
         className={`modal__label${
           passwordError ? "" : " modal__label_type_error"
         }`}
@@ -128,7 +128,7 @@ function RegisterModal({
         />
       </label>
       <label
-        htmlFor="Name"
+        htmlFor="Signup-Name"
         className={`modal__label${nameError ? "" : " modal__label_type_error"}`}
       >
         Name *
@@ -145,7 +145,7 @@ function RegisterModal({
         />
       </label>
       <label
-        htmlFor="Avatar"
+        htmlFor="Signup-Avatar"
         className={`modal__label${
           avatarError ? "" : " modal__label_type_error"
         }`}

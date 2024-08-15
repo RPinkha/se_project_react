@@ -1,7 +1,7 @@
 import { defaultCoordinates } from "./constants";
 
 //-----------------FUNCTION TO CHECK RESPONSE FROM SERVER------------------>>
-function checkResponse(res) {
+export function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 

@@ -79,4 +79,7 @@ export const weatherOptions = [
 ];
 
 //-----------------BASEURL FOR CLOTHING ITEMS------------------>>
-export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-RP.fairuse.org"
+    : "http://localhost:3001";

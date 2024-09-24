@@ -139,14 +139,17 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
+        console.log(data);
         if (data.token) {
-          const {
-            token,
-            user: { name, avatar, _id },
-          } = data;
-          setToken(token);
-          setUserData({ name, avatar, _id });
-          setIsLoggedIn(true);
+          console.log(data.token);
+          setToken(data.token);
+          api
+            .getUserInfo(data.token)
+            .then(({ name, avatar, _id }) => {
+              setIsLoggedIn(true);
+              setUserData({ name, avatar, _id });
+            })
+            .catch(console.error);
           closeActiveModal();
         }
       })

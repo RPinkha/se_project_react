@@ -139,9 +139,7 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log(data);
         if (data.token) {
-          console.log(data.token);
           setToken(data.token);
           api
             .getUserInfo(data.token)
